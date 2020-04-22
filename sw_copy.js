@@ -5,14 +5,11 @@ const FILES_TO_CACHE = [
   /*
   how to write file names to cache:
 
-  file_name.txt
-  dir_name/unko.js
+  ./file_name.txt
+  ./dir_name/unko.js
 
-  code below will change file names above into this:
-  ./APP_NAME/file_name.txt
-  ./APP_NAME/dir_name/unko.js
   */
-].map(value=>root_dir+value);
+]
 
 self.addEventListener('install', function(event) {
   event.waitUntil(
