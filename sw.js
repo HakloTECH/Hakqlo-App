@@ -1,4 +1,5 @@
-var CACHE_NAME = "0.0.2";
+const APP_NAME = "test", APP_VERSION = "0.0.0";
+const CACHE_NAME = APP_NAME+'-'+APP_VERSION;
 const FILES_TO_CACHE = [
   './',
   './manifest.webmanifest',
@@ -28,7 +29,7 @@ self.addEventListener('activate', function(event) {
       caches.keys().then((keyList) => {
           return Promise.all(keyList.map((key) => {
             console.log("key: "+key);
-            if (key!=="userData" && key !== CACHE_NAME) {
+            if (key.indexOf(APP_NAME)===0 &&key !== CACHE_NAME) {
               console.log('[ServiceWorker] Removing old cache', key);
               return caches.delete(key);
             }
