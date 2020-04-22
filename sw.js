@@ -1,4 +1,4 @@
-const APP_NAME = "mi-kenqjo-app", APP_VERSION = "0.0.0";
+const APP_NAME = "mi-kenqjo-app", APP_VERSION = "0.0.01";
 const CACHE_NAME = APP_NAME+'-'+APP_VERSION;
 const FILES_TO_CACHE = [
   './',
