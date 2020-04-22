@@ -1,6 +1,6 @@
 {
-    "short_name": "PWA TEST",
-    "name": "PWA TEST",
+    "short_name": "kenQjo",
+    "name": "MI kenQjo App",
     "start_url": "./index.html",
     "display": "fullscreen",
     "orientation": "landscape",
