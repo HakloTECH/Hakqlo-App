@@ -39,13 +39,8 @@ self.addEventListener('activate', function(event) {
 });
 self.addEventListener('fetch', function(evt) {
   const reqLogText = "request file:"+evt.request.url;
-  const ignore = (url=>{
-    if(url.match(/chrome-extension:\/\//)==null)return false;
-    return true;
-  })(evt.request.url);
   evt.respondWith(
     caches.match(evt.request).then(res=>{
-      if(ignore)return null;
       if(res!=null){
         console.log(reqLogText+"\n ...cache exists");
         return res;
