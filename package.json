@@ -1,0 +1,12 @@
+{
+  "name": "pwa",
+  "version": "1.0.0",
+  "description": "temp",
+  "main": "server.js",
+  "scripts": {
+    
+  },
+  "author": "Ichigo",
+  "license": "MIT"
+  
+}

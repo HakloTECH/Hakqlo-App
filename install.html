@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="./icon/icon-192x192.png">
+    <!-- android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- iOS -->
+    <link rel="apple-touch-icon" type="image/png" href="./icon/apple-touch-icon-180x180.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#f48c11">
+    <!-- manifest -->
+    <link rel="manifest" href="manifest.webmanifest">
+    <title>App Install page</title>
+    <script>
+    window.onappinstalled=()=>location.href+="/index.html";
+    let installApp = () =>{
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js').then(function() {
+          console.log('sucsessed');
+          
+          //location.href+="/pwa.html";
+        }).catch(function(err) {
+          console.log('error:', err);
+        });
+      }
+    }
+    installApp();
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

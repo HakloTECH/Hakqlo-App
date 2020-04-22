@@ -1,0 +1,17 @@
+{
+    "short_name": "PWA TEST",
+    "name": "PWA TEST",
+    "start_url": "./index.html",
+    "display": "fullscreen",
+    "orientation": "landscape",
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "icons": [
+        {
+            "src": "./icon/logo.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        }
+        
+    ]
+}

@@ -1,0 +1,115 @@
+:root {
+    --startup-animation-logo-base-length: 20px;
+    --startup-animation-logo-twice-length: calc(var(--startup-animation-logo-base-length) * 2);
+    --startup-animation-logo-base-height: calc(var(--startup-animation-logo-base-length) * 0.866025);
+    --startup-animation-logo-twice-height: calc(var(--startup-animation-logo-base-length) * 1.732051);
+    --startup-animation-logo-harf-length: calc(var(--startup-animation-logo-base-length) *0.5);
+    --startup-animation-logo-color: #00fdff;
+    --startup-animation-logo-max-length: calc(max(50vh,50vw) * 1.2)
+    /*----startup-animation-duration: 1s;
+    /* below will change its value later0.866
+    --startup-animation-extend-length: var(--startup-animation-logo-base-length);
+*/}
+#startup {
+    position: fixed;
+    background-color: var(--theme-color);
+    display: flex;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    transition: opacity 1s ease 2s;
+}
+#startup  .centerTriangle {
+    position: fixed;
+    left: calc(50vw - var(--startup-animation-logo-base-length));
+    top: calc(50vh - var(--startup-animation-logo-base-height));
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 var(--startup-animation-logo-base-length) var(--startup-animation-logo-twice-height);
+    border-color: transparent transparent transparent transparent;
+    animation: disappear1 1s step-end 0.5s 1 forwards;
+}
+
+#startup.clear {
+    opacity: 0;
+}
+
+#startup  .container {
+    position: fixed;
+    left: 0;
+    width: 100vw;
+    height: calc(var(--startup-animation-logo-base-height) * 3);
+    top: 50vh;
+    padding:0 0;
+    transform-origin: 50% 5.5px;
+}
+#startup  .container > .trapezoid {
+    position: relative;
+    width: 0%;
+    height: 0;
+    left: calc(0% - var(--startup-animation-logo-max-length));
+    top: 0px;
+    border-style: solid;
+    margin:0 0;
+    border-top: 0px;
+    border-bottom: var(--startup-animation-logo-base-height) solid var(--startup-animation-logo-color);
+    border-left: var(--startup-animation-logo-harf-length) solid transparent;
+    border-right: var(--startup-animation-logo-harf-length) solid transparent;
+    animation: extend2 1s ease 0.5s 1 forwards;
+}
+#startup .container > .parallelogram {
+    position: relative;
+    transform: skewX(-30deg);
+    width: 0%;
+    left: calc(60% + var(--startup-animation-logo-max-length));
+    height: var(--startup-animation-logo-base-height);
+    margin:0 5;
+    top: var(--startup-animation-logo-base-height);
+    background-color: var(--startup-animation-logo-color);
+    animation: extend1 1s ease 0.5s 1 forwards;
+}
+
+
+@keyframes disappear1{
+    70%, 100%{
+        border-color: transparent transparent var(--startup-animation-logo-color) transparent;
+    }
+}
+@keyframes extend1{
+    0% {
+    }
+    30% {
+        width: var(--startup-animation-logo-max-length);
+    }
+    100% {
+        width: calc(var(--startup-animation-logo-base-length) + var(--startup-animation-logo-base-length));
+        left: 50%;
+    }
+}
+@keyframes extend2{
+    0% {
+    }
+    30% {
+        width: calc(var(--startup-animation-logo-max-length)*0.5);
+    }
+    100%{
+        width: var(--startup-animation-logo-base-length);
+        left: calc(50% + var(--startup-animation-logo-base-length));
+    }
+    
+    
+}
+#startup  .fst {
+    
+}
+#startup  .snd {
+    transform: rotate(120deg);
+}
+#startup  .trd {
+    transform: rotate(-120deg);
+}
