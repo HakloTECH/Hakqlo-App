@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "temp",
   "main": "server.js",
-  "scripts": {
-    
-  },
+  "scripts": {},
   "author": "Ichigo",
-  "license": "MIT"
-  
+  "license": "MIT",
+  "dependencies": {
+    "o9n": "^2.1.0"
+  }
 }

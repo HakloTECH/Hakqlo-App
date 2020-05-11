@@ -65,4 +65,7 @@ for(x=0;x<s.length;x++){
     "type": "image/png"
   },`);
 }
+
+inkscape:[A-z]*-?[A-z]*="0"
+(style|id)="[\S]*"
 */
