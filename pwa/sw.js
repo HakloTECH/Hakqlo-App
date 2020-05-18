@@ -1,17 +1,17 @@
 const APP_NAME = "hakqlo-app", APP_VERSION = "0.0.01",OLD_CACHE_NAME = ["mi-kenqjo-app"];
 const CACHE_NAME = APP_NAME+'-'+APP_VERSION;
 const FILES_TO_CACHE = [
-  './',
-  './manifest.webmanifest',
-  './index.html',
-  './js/install.js',
-  './icon/logo.svg',
-  './icon/logo_copy.svg',
-  './icon/favicon.svg',
-  './js/init.js',
-  './css/main.css',
-  './js/startup.js',
-  './css/startupApp.css'
+  '../',
+  '../manifest.webmanifest',
+  '../index.html',
+  '../js/install.js',
+  '../icon/logo.svg',
+  '../icon/logo_copy.svg',
+  '../icon/favicon.svg',
+  '../js/init.js',
+  '../css/main.css',
+  '../js/startup.js',
+  '../css/startupApp.css'
 ];
 
 self.addEventListener('install', function(event) {
