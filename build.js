@@ -16,7 +16,7 @@ const rewriteJson = (filename,func) =>{
         });
       })
 }
-rewriteJson('./pwa/manifest.webmanifest',(obj)=>{
+rewriteJson('./manifest.webmanifest',(obj)=>{
     obj.background_color = backgroundColor;
     obj.theme_color = themeColor;
     obj.name = appName;
