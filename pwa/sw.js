@@ -29,9 +29,6 @@ self.addEventListener('activate', function(event) {
       caches.keys().then((keyList) => {
           return Promise.all(keyList.map((key) => {
             console.log("key: "+key);
-            OLD_CACHE_NAME.forEach(v=>{
-              if(key.indexOf(v)!==-1)return caches.delete(key);
-            })
             if (key.indexOf(APP_NAME)===0 &&key !== CACHE_NAME) {
               console.log('[ServiceWorker] Removing old cache', key);
               return caches.delete(key);
