@@ -17,7 +17,7 @@
     window.onappinstalled=()=>location.href+="/index.html";
     let installApp = () =>{
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js').then(function() {
+        navigator.serviceWorker.register('./pwa/sw.js').then(function() {
           console.log('sucsessed');
           
           //location.href+="/pwa.html";
