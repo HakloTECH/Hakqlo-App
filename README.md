@@ -1,2 +1,2 @@
 # PWATest
-app for MI-kenqjo
+app for Hakqlo community

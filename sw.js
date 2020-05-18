@@ -1,4 +1,4 @@
-const APP_NAME = "mi-kenqjo-app", APP_VERSION = "0.0.013";
+const APP_NAME = "hakqlo-app", APP_VERSION = "0.0.013",OLD_CACHE_NAME = ["mi-kenqjo-app"];
 const CACHE_NAME = APP_NAME+'-'+APP_VERSION;
 const FILES_TO_CACHE = [
   './',
@@ -29,6 +29,9 @@ self.addEventListener('activate', function(event) {
       caches.keys().then((keyList) => {
           return Promise.all(keyList.map((key) => {
             console.log("key: "+key);
+            OLD_CACHE_NAME.forEach(v=>{
+              if(key.indexOf(v)!==-1)return caches.delete(key);
+            })
             if (key.indexOf(APP_NAME)===0 &&key !== CACHE_NAME) {
               console.log('[ServiceWorker] Removing old cache', key);
               return caches.delete(key);
