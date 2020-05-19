@@ -19,10 +19,10 @@
             }else{
                 console.log('sw is NOT active');
             }
-            const { portMain, portSW } = new MessageChannel();
-            navigator.serviceWorker.controller.postMessage({ type: 'init' }, [ portSW ]);
-            global.portMain = portMain;
-            portMain.addEventListener('message',onMessage);
+            const { port1, port2 } = new MessageChannel();
+            navigator.serviceWorker.controller.postMessage({ type: 'init' }, [ port2 ]);
+            global.portMain = port1;
+            port1.addEventListener('message',onMessage);
         }).catch(function(err) {
             console.log('error:', err);
         });
