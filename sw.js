@@ -1,4 +1,4 @@
-const APP_NAME = "hakqlo-app", APP_VERSION = "0.0.022";
+const APP_NAME = "hakqlo-app", APP_VERSION = "0.0.023";
 const CACHE_NAME = APP_NAME+'-'+APP_VERSION;
 const FILES_TO_CACHE = [
   './',
@@ -27,7 +27,8 @@ self.addEventListener('message',e=>{
       default:
   }
 })
-console.log=(...args)=>{
+console.log1=(...args)=>{
+  console.log(portSW);
   portSW.postMessage({type: "consoleLog", content: args });
 }
 self.addEventListener('install', function(event) {
