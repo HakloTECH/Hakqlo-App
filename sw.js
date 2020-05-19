@@ -15,7 +15,6 @@ const FILES_TO_CACHE = [
 ];
 const channel = new MessageChannel();
 const portSW = channel.port1;
-self.postMessage({ type: 'init' }, [ channel.port2 ]);
 console.log=(...args)=>{
   portSW.postMessage({type: "consoleLog", content: args });
 }
