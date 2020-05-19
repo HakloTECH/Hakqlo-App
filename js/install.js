@@ -2,7 +2,7 @@
     global.portMain;
     const onMessage = e =>{
         const { type, content } = e.data;
-        console.log(type);
+        console.log("type:"+type);
         switch (type) {
             case 'consoleLog':
                 console.log(`sw: ${content}`);
@@ -24,7 +24,7 @@
             const { port1, port2 } = new MessageChannel();
             navigator.serviceWorker.controller.postMessage({ type: 'init' }, [ port2 ]);
             global.portMain = port1;
-            //port1.addEventListener('message',onMessage);
+            port1.addEventListener('message',onMessage);
             global.addEventListener('message',onMessage);
         }).catch(function(err) {
             console.log('error:', err);
