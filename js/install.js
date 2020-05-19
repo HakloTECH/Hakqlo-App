@@ -1,5 +1,5 @@
 ((global)=>{
-    
+    global.portMain;
     const onMessage = e =>{
         const { type } = e.data;
         console.log(type);
@@ -11,6 +11,10 @@
             default:
         }
     }
+    window.addEventListener('message',e=>{
+        console.error("window's event listener");
+        onMessage(e);
+    })
     if ('serviceWorker' in navigator) {
 
         navigator.serviceWorker.register('./sw.js').then(function(reg) {
