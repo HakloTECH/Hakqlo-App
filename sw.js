@@ -27,7 +27,7 @@ self.addEventListener('message',e=>{
   }
 })
 console.log=(...args)=>{
-  if(portSW)portSW.postMessage({type: "consoleLog", content: args });
+  if(!!portSW)portSW.postMessage({type: "consoleLog", content: args });
 }
 self.addEventListener('install', function(event) {
   event.waitUntil(
