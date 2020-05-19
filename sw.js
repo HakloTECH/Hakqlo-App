@@ -14,9 +14,10 @@ const FILES_TO_CACHE = [
   './css/startupApp.css'
 ];
 
-
+self.portSW = {postMessage:()=>{}}
 self.addEventListener('message',e=>{
   const { type } = e.data;
+  console.log(type);
   switch (type) {
       case 'init':
         self.portSW = e.ports[0];
@@ -27,7 +28,7 @@ self.addEventListener('message',e=>{
   }
 })
 console.log=(...args)=>{
-  if(!!portSW)portSW.postMessage({type: "consoleLog", content: args });
+  portSW.postMessage({type: "consoleLog", content: args });
 }
 self.addEventListener('install', function(event) {
   event.waitUntil(
