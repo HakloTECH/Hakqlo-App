@@ -1,15 +1,6 @@
 ((global)=>{
-    window.addEventListener('message',e=>{
-        const { type } = e.data;
-        switch (type) {
-            case 'init':
-            global.portMain = e.ports[0];
-            break;
     
-            default:
-        }
-    })
-    global.portMain.addEventListener('message',e=>{
+    const onMessage = e =>{
         const { type } = e.data;
         switch (type) {
             case 'consoleLog':
@@ -26,7 +17,12 @@
             if(reg.active){
                 console.log('sw is active');
                 console.log(reg.active);
-                //reg.active.postMessage({ type: 'init' }, [ port2 ]);
+                const { portMain, portSW } = new MessageChannel();
+                reg.active.postMessage({ type: 'init' }, [ portSW ]);
+                global.portMain = portMain;
+                portMain.addEventListener('message',onMessage);
+            }else{
+                console.log('sw is NOT active');
             }
         }).catch(function(err) {
             console.log('error:', err);

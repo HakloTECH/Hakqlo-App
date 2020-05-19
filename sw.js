@@ -1,4 +1,4 @@
-const APP_NAME = "hakqlo-app", APP_VERSION = "0.0.016";
+const APP_NAME = "hakqlo-app", APP_VERSION = "0.0.017";
 const CACHE_NAME = APP_NAME+'-'+APP_VERSION;
 const FILES_TO_CACHE = [
   './',
@@ -13,8 +13,18 @@ const FILES_TO_CACHE = [
   './js/startup.js',
   './css/startupApp.css'
 ];
-const channel = new MessageChannel();
-const portSW = channel.port1;
+
+
+self.addEventListener('message',e=>{
+  const { type } = e.data;
+  switch (type) {
+      case 'init':
+        self.portSW = e.ports[0];
+      break;
+
+      default:
+  }
+})
 console.log=(...args)=>{
   portSW.postMessage({type: "consoleLog", content: args });
 }
@@ -41,7 +51,7 @@ self.addEventListener('activate', function(event) {
         })
     
   );
-  self.postMessage({ type: 'init' }, [ channel.port2 ]);
+  
 });
 self.addEventListener('fetch', function(evt) {
   const reqLogText = "request file:"+evt.request.url;
