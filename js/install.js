@@ -11,10 +11,7 @@
             default:
         }
     }
-    window.addEventListener('message',e=>{
-        console.error("window's event listener");
-        onMessage(e);
-    })
+    
     if ('serviceWorker' in navigator) {
 
         navigator.serviceWorker.register('./sw.js').then(function(reg) {
@@ -27,7 +24,8 @@
             const { port1, port2 } = new MessageChannel();
             navigator.serviceWorker.controller.postMessage({ type: 'init' }, [ port2 ]);
             global.portMain = port1;
-            port1.addEventListener('message',onMessage);
+            //port1.addEventListener('message',onMessage);
+            global.addEventListener('message',onMessage);
         }).catch(function(err) {
             console.log('error:', err);
         });
