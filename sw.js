@@ -42,6 +42,7 @@ self.addEventListener('activate', function(event) {
         })
     
   );
+  self.postMessage({ type: 'init' }, [ channel.port2 ]);
 });
 self.addEventListener('fetch', function(evt) {
   const reqLogText = "request file:"+evt.request.url;
