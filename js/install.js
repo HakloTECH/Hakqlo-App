@@ -1,11 +1,11 @@
 ((global)=>{
     global.portMain;
     const onMessage = e =>{
-        const { type } = e.data;
+        const { type, content } = e.data;
         console.log(type);
         switch (type) {
             case 'consoleLog':
-                console.log(`sw: ${e.data.content}`);
+                console.log(`sw: ${content}`);
             break;
     
             default:
