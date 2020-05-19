@@ -2,6 +2,7 @@
     global.portMain;
     const onMessage = e =>{
         const { type, content } = e.data;
+        console.log(e);
         console.log("type:"+type);
         switch (type) {
             case 'consoleLog':
