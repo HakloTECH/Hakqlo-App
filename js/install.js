@@ -2,6 +2,7 @@
     
     const onMessage = e =>{
         const { type } = e.data;
+        console.log(type);
         switch (type) {
             case 'consoleLog':
                 console.log(`sw: ${e.data.content}`);

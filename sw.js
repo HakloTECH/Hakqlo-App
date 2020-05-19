@@ -1,4 +1,4 @@
-const APP_NAME = "hakqlo-app", APP_VERSION = "0.0.023";
+const APP_NAME = "hakqlo-app", APP_VERSION = "0.0.024";
 const CACHE_NAME = APP_NAME+'-'+APP_VERSION;
 const FILES_TO_CACHE = [
   './',
