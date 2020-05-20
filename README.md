@@ -5,29 +5,22 @@ app for Hakqlo community
 
 To test PWA locally, 
 use the following command to enable https local hosting.
+
+Firstly, install mkcert. -> https://github.com/FiloSottile/mkcert (you can find some instructions for installing)
+then run the following command.
 ```bash
-openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
+mkcert -install
 ```
-then you may put some options like:
+in your project directory, run:
+```bash
+mkcert 0.0.0.0 localhost 127.0.0.1 ::1
 ```
-Generating a 2048 bit RSA private key
-.+++
-...................................................................................+++
-writing new private key to 'key.pem'
------
-You are about to be asked to enter information that will be incorporated
-into your certificate request.
-What you are about to enter is what is called a Distinguished Name or a DN.
-There are quite a few fields but you can leave some blank
-For some fields there will be a default value,
-If you enter '.', the field will be left blank.
------
-Country Name (2 letter code) []:JP
-State or Province Name (full name) []:
-Locality Name (eg, city) []:
-Organization Name (eg, company) []:Hakqlo 
-Organizational Unit Name (eg, section) []:
-Common Name (eg, fully qualified host name) []:127.0.0.1
-Email Address []:official.hakqlo@gmail.com
+Two files generated in your directory, and rename it.
+0.0.0.0+3-key.pem -> key.pem
+0.0.0.0+3.pem -> cert.pem
+
+then you can make a https server locally.
+```bash
+http-server -S -C cert.pem -o
 ```
-source: https://stackoverflow.com/questions/35127383/npm-http-server-with-ssl
+source: https://qiita.com/walkers/items/b90a97a99bbb27f6550f
