@@ -2,8 +2,6 @@
     global.portMain;
     const onMessage = e =>{
         const { type, content } = e.data;
-        console.log(e);
-        console.log("type:"+type);
         switch (type) {
             case 'consoleLog':
                 console.log(`sw: ${content}`);
@@ -18,17 +16,16 @@
         navigator.serviceWorker.register('./sw.js').then(function(reg) {
             console.log('sucsessed');
             if(reg.active){
-                console.log('sw is active');                
+                console.log('sw is active');  
+                const { port1, port2 } = new MessageChannel();
+                reg.active.postMessage({ type: 'init' }, [ port2 ]);
+                global.portMain = port1;
+                port1.onmessage = onMessage;              
             }else{
                 console.log('sw is NOT active');
             }
-            const { port1, port2 } = new MessageChannel();
-            navigator.serviceWorker.controller.postMessage({ type: 'init' }, [ port2 ]);
-            global.portMain = port1;
-            port1.addEventListener('message',onMessage);
-            global.addEventListener('message',onMessage);
         }).catch(function(err) {
-            console.log('error:', err);
+            console.error('error:', err);
         });
     }
 })(window);
