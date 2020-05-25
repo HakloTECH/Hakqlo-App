@@ -18,7 +18,7 @@ window.popup = (title,contents,buttons={"OK":"ok"}) =>{
     form.appendChild(titleBar);
     titleBar.setAttribute("class","title");
     titleBar.innerText = title;
-    cancelButton = document.createElement("button");
+    const cancelButton = document.createElement("button");
     cancelButton.innerText = "cancel"
     cancelButton.setAttribute("value","cancel");
 
