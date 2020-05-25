@@ -1,4 +1,4 @@
-const APP_NAME = "hakqlo-app", APP_VERSION = "0.0.03246";
+const APP_NAME = "hakqlo-app", APP_VERSION = "0.0.035";
 const CACHE_NAME = APP_NAME+'-'+APP_VERSION;
 const FILES_TO_CACHE = [
   './',
@@ -11,7 +11,8 @@ const FILES_TO_CACHE = [
   './js/init.js',
   './css/main.css',
   './js/startup.js',
-  './css/startupApp.css'
+  './css/startupApp.css',
+  './js/baseFunctions.js'
 ];
 
 self.portSW;
