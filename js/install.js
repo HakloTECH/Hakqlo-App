@@ -32,6 +32,7 @@
         });
         //if the app is not installed
         if(!global.isPWA){
+            console.log("Not PWA")
             //make an install button (or installPWA function for terminal maybe?)
             global.showInstallPrompt;
             //showInstallPrompt is a function 
