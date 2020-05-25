@@ -24,7 +24,7 @@ window.popup = (title,contents,buttons={"OK":"ok"}) =>{
 
     titleBar.appendChild(cancelButton);
     contents.forEach(v=>{
-        let columnBar = document.createElement("p");
+        const columnBar = document.createElement("p");
         if(typeof v === "string"){
             let label = document.createElement("label");
             columnBar.appendChild(label);
