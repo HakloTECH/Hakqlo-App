@@ -5,11 +5,79 @@
 }
 html, body {
     position:fixed;
+    width: 100vw;
+    height: 100vh;
     margin: 0;
     padding: 0;
     background-color: var(--theme-color);
     user-select: none;
 }
+dialog {
+    position: fixed;
+    /*margin-top: 0px;
+    margin-bottom: 0px;*/
+    backdrop-filter: blur(6px);
+    background-color: rgba(84, 82, 82, 0.26);
+    color: rgba(214, 214, 214, 0.925);
+    border-width: 0px;
+    border-radius: 5px;
+    padding: 8px;
+    width: calc(100vw - 40px);
+    text-align: center;
+    font-family: fantasy;
+    transition: transform 0.5s ease;
+    display: block;
+    bottom: 10px;
+}
+dialog[open] {
+    transform: translateY(0%);
+}
+dialog:not([open]),dialog.sent-back {
+    transform: translateY(100%);
+}
+dialog>form{
+    margin: 0px;
+}
+dialog>form>p{
+    text-align: center;
+    border-bottom: 1px solid;
+    padding-bottom: 8px;
+    border-color:rgba(128, 128, 128, 0.63);
+    margin: 0px;
+    padding: 18px;
+}
+dialog>form>p.title{
+    text-align: left;
+    font-size: large;
+    padding: 0px;
+    padding-bottom: 8px;
+    color: rgb(243, 243, 243);
+}
+dialog menu{
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+dialog button{
+    position: relative;
+    font-size: large;
+    border-width: 0px;
+    border-radius: 5px;
+    color: rgba(60, 138, 255, 0.911);
+    background-color: transparent;
+    padding: 12px 10px 4px 10px;
+}
+dialog>form>p>button{
+    position: fixed;
+    right: 5px;
+    padding: initial;
+    padding: 2px 6px;
+}
+
+
+
 
 #menuIcons {
     position: absolute;

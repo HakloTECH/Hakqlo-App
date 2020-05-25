@@ -1,4 +1,4 @@
-const APP_NAME = "hakqlo-app", APP_VERSION = "0.0.031111";
+const APP_NAME = "hakqlo-app", APP_VERSION = "0.0.03246";
 const CACHE_NAME = APP_NAME+'-'+APP_VERSION;
 const FILES_TO_CACHE = [
   './',
@@ -26,6 +26,7 @@ self.addEventListener('message',e=>{
 
       default:
   }
+  self.portSW && portSW.start();
 })
 console.log=(...args)=>{
   self.portSW && portSW.postMessage({type: "consoleLog", content: args });
