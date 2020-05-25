@@ -37,7 +37,7 @@ window.popup = (title,contents,buttons={"OK":"ok"}) =>{
     })
     const menu = document.createElement("menu");
     form.appendChild(menu);
-    for(v in buttons){
+    for(const v in buttons){
         const btn = document.createElement("button");
         btn.innerHTML = v;
         menu.appendChild(btn);
