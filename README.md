@@ -8,6 +8,12 @@ app for Hakqlo community
 ```bash
 npm i
 ```
+## TODO
+
+move the project onto WebPack.
+add dialog-element-polyfill https://github.com/GoogleChrome/dialog-polyfill
+add xtermjs
+
 
 ## To test PWA locally, 
 use the following command to enable https local hosting.

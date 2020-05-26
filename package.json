@@ -7,6 +7,7 @@
   "author": "Ichigo",
   "license": "MIT",
   "dependencies": {
+    "dialog-polyfill": "^0.5.1",
     "o9n": "^2.1.0"
   },
   "devDependencies": {
