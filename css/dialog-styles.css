@@ -1,8 +1,0 @@
-dialog>form>p  li {
-    text-align: left;
-    margin: 10px 0px;
-}
-dialog>form>p  li>* {
-    display: inline-block;
-    vertical-align: middle;
-}
