@@ -47,18 +47,22 @@
                     popup("Install",[
                         "You can install this App by adding into the home screen.",
                         createElementFromHTML(`
-                            <div><div style='background-color: rgba(60, 138, 255, 0.911);
+                            <ol>
+                            <li><div style='background-color: rgba(60, 138, 255, 0.911);
                             -webkit-mask: url(./icon/ios-safari-share-icon.svg) no-repeat center;
                             mask: url(./icon/ios-safari-share-icon.svg) no-repeat center;width: 28px;
-                            height: 28px;'></div> press share button</div>
-                        `),createElementFromHTML(`
-                        <div><div style='background-color: white;
+                            height: 28px;'></div> press share button</li><li><div style='background-color: white;
                         -webkit-mask: url(./icon/ios-safari-add-to-home-icon.svg) no-repeat center;
                         mask: url(./icon/ios-safari-add-to-home-icon.svg) no-repeat center;width: 28px;
-                        height: 28px;'></div> then press 'add to home' button</div>
+                        height: 28px;'></div> then press 'add to home' button</li></ol>
                     `)]).then(res=>console.log(res)).catch(e=>console.warn(e))
                 }
             }
+            console.log("global.showInstallPrompt:")
+            console.log(global.showInstallPrompt);
+            console.log("showInstallPrompt:")
+            console.log(showInstallPrompt);
+            
         }
     }
     
