@@ -3,7 +3,13 @@ app for Hakqlo community
 
 # for Developers:
 
-To test PWA locally, 
+## First step
+
+```bash
+npm i
+```
+
+## To test PWA locally, 
 use the following command to enable https local hosting.
 
 Firstly, install mkcert. -> https://github.com/FiloSottile/mkcert (you can find some instructions for installing)

@@ -49,11 +49,13 @@
                         createElementFromHTML(`
                             <div><div style='background-color: rgba(60, 138, 255, 0.911);
                             -webkit-mask: url(./icon/ios-safari-share-icon.svg) no-repeat center;
-                            mask: url(./icon/ios-safari-share-icon.svg) no-repeat center;'></div> press share button</div>
+                            mask: url(./icon/ios-safari-share-icon.svg) no-repeat center;width: 28px;
+                            height: 28px;'></div> press share button</div>
                         `),createElementFromHTML(`
                         <div><div style='background-color: white;
                         -webkit-mask: url(./icon/ios-safari-add-to-home-icon.svg) no-repeat center;
-                        mask: url(./icon/ios-safari-add-to-home-icon.svg) no-repeat center;'></div> then press 'add to home' button</div>
+                        mask: url(./icon/ios-safari-add-to-home-icon.svg) no-repeat center;width: 28px;
+                        height: 28px;'></div> then press 'add to home' button</div>
                     `)]).then(res=>console.log(res)).catch(e=>console.warn(e))
                 }
             }

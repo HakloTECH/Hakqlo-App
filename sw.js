@@ -1,4 +1,4 @@
-const APP_NAME = "hakqlo-app", APP_VERSION = "0.0.0333";
+const APP_NAME = "hakqlo-app", APP_VERSION = "0.0.0344";
 const CACHE_NAME = APP_NAME+'-'+APP_VERSION;
 const FILES_TO_CACHE = [
   './',
@@ -12,7 +12,8 @@ const FILES_TO_CACHE = [
   './css/main.css',
   './js/startup.js',
   './css/startupApp.css',
-  './js/baseFunctions.js'
+  './js/baseFunctions.js',
+  './css/dialog-styles.css'
 ];
 
 self.portSW;
@@ -65,7 +66,7 @@ self.addEventListener('fetch', function(evt) {
         console.log(reqLogText+"\n ...cache exists");
         return res;
       }else{
-        console.error(reqLogText+"\n ...cache didn't exit");
+        console.warn(reqLogText+"\n ...cache didn't exit");
         return fetch(evt.request);
       }
       
