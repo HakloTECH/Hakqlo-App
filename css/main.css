@@ -12,6 +12,12 @@ html, body {
     background-color: var(--theme-color);
     user-select: none;
 }
+button {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: orange;
+    color: darkturquoise;
+}
 dialog {
     position: fixed;
     /*margin-top: 0px;

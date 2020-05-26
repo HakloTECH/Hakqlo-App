@@ -34,7 +34,7 @@
         if(!global.isPWA){
             console.log("Not PWA")
             //make an install button (or installPWA function for terminal maybe?)
-            global.showInstallPrompt;
+            let showInstallPrompt;
             //showInstallPrompt is a function 
             if("onbeforeinstallprompt" in window){
                 window.addEventListener("beforeinstallprompt",e=>{
@@ -58,10 +58,12 @@
                     `)]).then(res=>console.log(res)).catch(e=>console.warn(e))
                 }
             }
-            console.log("global.showInstallPrompt:")
-            console.log(global.showInstallPrompt);
-            console.log("showInstallPrompt:")
-            console.log(showInstallPrompt);
+            const installButton = document.createElement("button");
+            installButton.addEventListener('click',()=>{
+                showInstallPrompt();
+            })
+            document.body.appendChild(installButton)
+            global.showInstallPrompt = showInstallPrompt;
             
         }
     }
