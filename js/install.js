@@ -58,12 +58,17 @@
                     `)]).then(res=>console.log(res)).catch(e=>console.warn(e))
                 }
             }
-            const installButton = document.createElement("button");
-            installButton.addEventListener('click',()=>{
-                showInstallPrompt();
-            })
-            document.body.appendChild(installButton)
-            global.showInstallPrompt = showInstallPrompt;
+            if(showInstallPrompt){
+                const installButton = document.createElement("button");
+                installButton.innerText = "install";
+                installButton.addEventListener('click',()=>{
+                    showInstallPrompt();
+                })
+                document.body.appendChild(installButton);
+            }
+            else{
+                console.log("didn't you already install the app?")
+            }
             
         }
     }
