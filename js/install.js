@@ -47,7 +47,8 @@
                 })
             }else if(true){
                 //show a prompt exaplaining how to install(in IOS safari)
-                popup("Install",[
+                installButton.addEventListener('click',()=>{
+                    popup("Install",[
                     "You can install this App by adding into the home screen.",
                     createElementFromHTML(`
                         <ol>
@@ -59,6 +60,8 @@
                     mask: url(./icon/ios-safari-add-to-home-icon.svg) no-repeat center;width: 28px;
                     height: 28px;'></div> then press 'add to home' button</li></ol>
                 `)]).then(res=>console.log(res)).catch(e=>console.warn(e))
+                })
+                
             }
             
         }
