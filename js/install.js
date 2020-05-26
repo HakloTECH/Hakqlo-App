@@ -34,40 +34,31 @@
         if(!global.isPWA){
             console.log("Not PWA")
             //make an install button (or installPWA function for terminal maybe?)
-            let showInstallPrompt;
+            const installButton = document.createElement("button");
+            installButton.innerText = "install";
+            document.body.appendChild(installButton);
             //showInstallPrompt is a function 
             if("onbeforeinstallprompt" in window){
                 window.addEventListener("beforeinstallprompt",e=>{
                     e.preventDefault();
-                    showInstallPrompt = e.prompt;
+                    installButton.addEventListener('click',()=>{
+                        e.prompt();
+                    })
                 })
-            }else{
+            }else if(true){
                 //show a prompt exaplaining how to install(in IOS safari)
-                showInstallPrompt = () =>{
-                    popup("Install",[
-                        "You can install this App by adding into the home screen.",
-                        createElementFromHTML(`
-                            <ol>
-                            <li><div style='background-color: rgba(60, 138, 255, 0.911);
-                            -webkit-mask: url(./icon/ios-safari-share-icon.svg) no-repeat center;
-                            mask: url(./icon/ios-safari-share-icon.svg) no-repeat center;width: 28px;
-                            height: 28px;'></div> press share button</li><li><div style='background-color: white;
-                        -webkit-mask: url(./icon/ios-safari-add-to-home-icon.svg) no-repeat center;
-                        mask: url(./icon/ios-safari-add-to-home-icon.svg) no-repeat center;width: 28px;
-                        height: 28px;'></div> then press 'add to home' button</li></ol>
-                    `)]).then(res=>console.log(res)).catch(e=>console.warn(e))
-                }
-            }
-            if(showInstallPrompt){
-                const installButton = document.createElement("button");
-                installButton.innerText = "install";
-                installButton.addEventListener('click',()=>{
-                    showInstallPrompt();
-                })
-                document.body.appendChild(installButton);
-            }
-            else{
-                console.log("didn't you already install the app?")
+                popup("Install",[
+                    "You can install this App by adding into the home screen.",
+                    createElementFromHTML(`
+                        <ol>
+                        <li><div style='background-color: rgba(60, 138, 255, 0.911);
+                        -webkit-mask: url(./icon/ios-safari-share-icon.svg) no-repeat center;
+                        mask: url(./icon/ios-safari-share-icon.svg) no-repeat center;width: 28px;
+                        height: 28px;'></div> press share button</li><li><div style='background-color: white;
+                    -webkit-mask: url(./icon/ios-safari-add-to-home-icon.svg) no-repeat center;
+                    mask: url(./icon/ios-safari-add-to-home-icon.svg) no-repeat center;width: 28px;
+                    height: 28px;'></div> then press 'add to home' button</li></ol>
+                `)]).then(res=>console.log(res)).catch(e=>console.warn(e))
             }
             
         }
