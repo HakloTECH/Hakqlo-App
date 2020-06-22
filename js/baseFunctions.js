@@ -1,65 +1,72 @@
-window.popup = (title,contents,buttons={"OK":"ok"}) =>{
-    const previousDialogs = document.querySelectorAll("dialog");
-    const thePreviousOneDialog = previousDialogs[previousDialogs.length-1]
-    previousDialogs.forEach(v=>{
-        v.setAttribute("class","sent-back");
-    })/*
+import dialogPolyfill from 'dialog-polyfill'
+const popup = (title, contents, buttons = { "OK": "ok" }) => {
+  const previousDialogs = document.querySelectorAll("dialog");
+  const thePreviousOneDialog = previousDialogs[previousDialogs.length - 1]
+  previousDialogs.forEach(v => {
+    v.setAttribute("class", "sent-back");
+  })/*
     background-color: red;
     -webkit-mask: url(./icon/ios-safari-share-icon.svg) no-repeat center;
     mask: url(./icon/ios-safari-share-icon.svg) no-repeat center;*/
-    //below would be a shit code.
-    //why didn't I just make one function that creates a new element and adds onto a specific element
-    const dialog = document.createElement("dialog");
-    document.body.appendChild(dialog);
-    const form = document.createElement("form");
-    dialog.appendChild(form);
-    form.setAttribute("method","dialog")
-    const titleBar = document.createElement("p");
-    form.appendChild(titleBar);
-    titleBar.setAttribute("class","title");
-    titleBar.innerText = title;
-    const cancelButton = document.createElement("button");
-    cancelButton.innerText = "cancel"
-    cancelButton.setAttribute("value","cancel");
+  //below would be a shit code.
+  //why didn't I just make one function that creates a new element and adds onto a specific element
+  const dialog = document.createElement("dialog");
+  dialogPolyfill.registerDialog(dialog);
+  document.body.appendChild(dialog);
+  const form = document.createElement("form");
+  dialog.appendChild(form);
+  form.setAttribute("method", "dialog")
+  const titleBar = document.createElement("p");
+  form.appendChild(titleBar);
+  titleBar.setAttribute("class", "title");
+  titleBar.innerText = title;
+  const cancelButton = document.createElement("button");
+  cancelButton.innerText = "cancel"
+  cancelButton.setAttribute("value", "cancel");
 
-    titleBar.appendChild(cancelButton);
-    contents.forEach(v=>{
-        const columnBar = document.createElement("p");
-        if(typeof v === "string"){
-            let label = document.createElement("label");
-            columnBar.appendChild(label);
-            label.innerText = v;
-        }else if(v instanceof HTMLElement){
-            columnBar.appendChild(v);
-        }
-        form.appendChild(columnBar);
-        
-    })
-    const menu = document.createElement("menu");
-    form.appendChild(menu);
-    for(const v in buttons){
-        const btn = document.createElement("button");
-        btn.innerHTML = v;
-        menu.appendChild(btn);
-        btn.setAttribute("value",buttons[v])
-        btn.setAttribute("type","submit");
+  titleBar.appendChild(cancelButton);
+  contents.forEach(v => {
+    const columnBar = document.createElement("p");
+    if (typeof v === "string") {
+      let label = document.createElement("label");
+      columnBar.appendChild(label);
+      label.innerText = v;
+    } else if (v instanceof HTMLElement) {
+      columnBar.appendChild(v);
     }
-    return new Promise(resolve=>{
-        dialog.addEventListener('close', ()=>{
-            setTimeout(()=>dialog.remove(),500);
-            thePreviousOneDialog && thePreviousOneDialog.removeAttribute("class");
-            resolve(dialog.returnValue);
-        });
-        setTimeout(()=>dialog.showModal(),100);
-    })
+    form.appendChild(columnBar);
+
+  })
+  const menu = document.createElement("menu");
+  form.appendChild(menu);
+  for (const v in buttons) {
+    const btn = document.createElement("button");
+    btn.innerHTML = v;
+    menu.appendChild(btn);
+    btn.setAttribute("value", buttons[v])
+    btn.setAttribute("type", "submit");
+  }
+  return new Promise(resolve => {
+    dialog.addEventListener('close',() => {
+      setTimeout(() => dialog.remove(), 500);
+      thePreviousOneDialog && thePreviousOneDialog.removeAttribute("class");
+      resolve(dialog.returnValue);
+    });
+    setTimeout(() => dialog.showModal(), 100);
+  })
 }
-window.createElementFromHTML = (htmlString)=> {
-    var div = document.createElement('div');
-    div.innerHTML = htmlString.trim();
-  
-    // Change this to div.childNodes to support multiple top-level nodes
-    return div.firstChild; 
-}/*
+const createElementFromHTML = (htmlString) => {
+  var div = document.createElement('div');
+  div.innerHTML = htmlString.trim();
+
+  // Change this to div.childNodes to support multiple top-level nodes
+  return div.firstChild;
+}
+export function init(window){
+  window.popup = popup;
+  window.createElementFromHTML = createElementFromHTML;
+}
+/*
 popup("Install",[
     createElementFromHTML(`
         <div><div style='background-color: red;
@@ -80,7 +87,7 @@ popup("Install",[
         while(true){
             const imgStartIndex = str.indexOf("{img:");
             if(imgStartIndex!==0){
-                
+
                 let label = document.createElement("label");
                 titleBar.appendChild(label);
                 if(imgStartIndex!==-1){
@@ -90,7 +97,7 @@ popup("Install",[
                     label.innerText = str;
                     break;
                 }
-                
+
             }else if(imgStartIndex===0){
                 const tagEndIndex = str.indexOf("}");
                 const imgSrc = str.substring(5,tagEndIndex);
