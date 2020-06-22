@@ -34,7 +34,7 @@ dialog {
   padding: 8px;
   width: calc(100vw - 40px);
   text-align: center;
-  font-family: Roboto;
+  font-family: Arial;
   transition: transform 0.5s ease;
   display: block;
   bottom: 10px;

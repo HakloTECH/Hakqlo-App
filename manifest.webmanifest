@@ -8,7 +8,7 @@
 	"description": "Hakqlo the technology community's PWA app",
 	"icons": [
 		{
-			"src": "./icon/logo.svg",
+			"src": "./icon/logo008b.svg",
 			"sizes": "any",
 			"type": "image/svg+xml"
 		}
