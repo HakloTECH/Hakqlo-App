@@ -34,7 +34,7 @@ const installProcess = (global) => {
     //if the app is not installed
     if (!global.isPWA) {
       console.log("Not PWA")
-      location.href = '../install.html';
+      location.href = './install.html';
 
     }else console.log('this is in PWA')
   }
