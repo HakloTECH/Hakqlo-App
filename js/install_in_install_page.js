@@ -20,6 +20,7 @@ window.onappinstalled=()=>location.href="./index.html";
 //console.log('test');
 let installApp = () =>{
   if ('serviceWorker' in navigator) {
+    //navigator.serviceWorker.register('./sw.js')
     runtime.register().then(function() {
       console.log('sucsessed');
       

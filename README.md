@@ -2,11 +2,18 @@
 app for Hakqlo community
 
 # for Developers:
-please use "double spaces" indentation.
+please use "double spaces" indentation when code.
 you should change settings of indentation in order to do this.
 If you don't know how to, ask in our Discord channel.
 
 We are using WebPack
+
+## file structure
+├── css/
+│   ├── 
+│   └──
+├── dist/   ->compiled files
+
 ## First step
 
 ```bash

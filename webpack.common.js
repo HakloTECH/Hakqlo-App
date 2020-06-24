@@ -32,8 +32,8 @@ module.exports = {
     //new webpack.HotModuleReplacementPlugin(),
     new webpack.ExtendedAPIPlugin(),
     new ServiceWorkerWebpackPlugin({
-      entry: path.join(__dirname, './sw.js'),
-      excludes: ['./install.html', './js/install.js', './icon/ios-safari-add-to-home-icon.svg', './icon/ios-safari-share-icon.svg'],
+      entry: path.resolve('./sw.js'),
+      excludes: ['./install.html', './js/install_in_install_page.js', './icon/ios-safari-add-to-home-icon.svg', './icon/ios-safari-share-icon.svg'],
     }),
     new WebpackPwaManifest({
       filename: "manifest.webmanifest",
