@@ -5,13 +5,13 @@ var serviceWorkerOption = {
     "/78492f0a1915464b90c8acc9c91b67cb.css",
     "/0e3295e4662107e65d1f8f13f4ba967c.svg",
     "/2bfa27340655858f8ebb60b791e8debb.svg",
-    "/runtime.4d88476896d924300a5c.js",
+    "/runtime.0af082369a6769e2610a.js",
     "/vendors.css",
-    "/vendors.4d88476896d924300a5c.js",
+    "/vendors.0af082369a6769e2610a.js",
     "/app.css",
-    "/app.4d88476896d924300a5c.js",
+    "/app.0af082369a6769e2610a.js",
     "/install.css",
-    "/install.4d88476896d924300a5c.js",
+    "/install.0af082369a6769e2610a.js",
     "/index.html",
     "/install.html"
   ]
