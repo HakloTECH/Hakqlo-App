@@ -1,4 +1,10 @@
 import dialogPolyfill from 'dialog-polyfill'
+/**
+ * 
+ * @param {string} title 
+ * @param {Array.<(string|HTMLElement)>} contents 
+ * @param {Object.<string, string>} buttons 
+ */
 const popup = (title, contents, buttons = { "OK": "ok" }) => {
   const previousDialogs = document.querySelectorAll("dialog");
   const thePreviousOneDialog = previousDialogs[previousDialogs.length - 1]
