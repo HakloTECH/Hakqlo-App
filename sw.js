@@ -7,13 +7,13 @@ var serviceWorkerOption = {
     "./2bfa27340655858f8ebb60b791e8debb.svg",
     "./78492f0a1915464b90c8acc9c91b67cb.css",
     "./43753b6d70284ce6a52997185c34c02a.svg",
-    "./runtime.815e8894aab9904a30e2.js",
+    "./runtime.bd3b652161e1cd4794e5.js",
     "./vendors.css",
-    "./vendors.815e8894aab9904a30e2.js",
+    "./vendors.bd3b652161e1cd4794e5.js",
     "./app.css",
-    "./app.815e8894aab9904a30e2.js",
+    "./app.bd3b652161e1cd4794e5.js",
     "./install.css",
-    "./install.815e8894aab9904a30e2.js",
+    "./install.bd3b652161e1cd4794e5.js",
     "./index.html"
   ]
 };
