@@ -1,6 +1,7 @@
 const APP_NAME = "hakqlo-app", APP_VERSION = __webpack_hash__;
 const CACHE_NAME = APP_NAME+'-'+APP_VERSION;
-const FILES_TO_CACHE = serviceWorkerOption.assets;
+const FILES_TO_CACHE = serviceWorkerOption.assets
+//.map(v=>"."+v);
 
 self.portSW;
 self.addEventListener('message',e=>{
@@ -39,7 +40,7 @@ self.addEventListener('activate', function(event) {
           return caches.delete(key);
         }
       }));
-      })
+    })
   
   );
   

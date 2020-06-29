@@ -1,13 +1,14 @@
 import runtime from 'serviceworker-webpack-plugin/lib/runtime';
 const installProcess = (global) => {
-  const isInStandaloneMode = () => (window.matchMedia('(display-mode: standalone)').matches) || (window.matchMedia('(display-mode: fullscreen)').matches) || (window.navigator.standalone) || document.referrer.includes('android-app://');
+  // || (window.matchMedia('(display-mode: fullscreen)').matches) 
+  const isInStandaloneMode = () => (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone) || document.referrer.includes('android-app://');
   global.isPWA = isInStandaloneMode();
   global.portMain;
   const onMessage = e => {
     const { type, content } = e.data;
     switch (type) {
       case 'consoleLog':
-        console.log(`sw: ${content}`);
+        console.log('sw:', content);
         break;
 
       default:
@@ -16,7 +17,7 @@ const installProcess = (global) => {
   }
 
   if ('serviceWorker' in navigator) {
-
+    //runtime.register()
     runtime.register().then(function (reg) {
       console.log('sucsessed');
       if (reg.active) {

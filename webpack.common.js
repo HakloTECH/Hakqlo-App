@@ -33,7 +33,14 @@ module.exports = {
     new webpack.ExtendedAPIPlugin(),
     new ServiceWorkerWebpackPlugin({
       entry: path.resolve('./sw.js'),
-      excludes: ['./install.html', './js/install_in_install_page.js', './icon/ios-safari-add-to-home-icon.svg', './icon/ios-safari-share-icon.svg'],
+      publicPath: './',
+      excludes: [
+        'install.html', 
+        'js/install_in_install_page.js', 
+        'icon/ios-safari-add-to-home-icon.svg', 
+        'icon/ios-safari-share-icon.svg',
+        'icon/install.svg',
+      ],
     }),
     new WebpackPwaManifest({
       filename: "manifest.webmanifest",
@@ -49,7 +56,7 @@ module.exports = {
         {
           //src: path.resolve("./icon/logo.svg"),
           src: path.resolve("./icon/logo008b.svg"),
-          sizes: [96, 128, 192, 256, 384, 512, 1024],
+          sizes: [200],
           type: "image/svg+xml"
         }
       ],/*
@@ -76,15 +83,6 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
-            options: {
-              url: false,
-              sourceMap: true,
-
-              // 0 => no loaders (default);
-              // 1 => postcss-loader;
-              // 2 => postcss-loader, sass-loader
-              importLoaders: 2
-            }
           },
           {
             loader: "sass-loader",

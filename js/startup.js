@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded",()=>{
 })
 
 /*
+.addEventListener('transitionend', (event) => {
+      event.target.remove();
+    });
 //function for creating and adding elements
     const ce = (tagname,parent) =>{
         const el = document.createElement(tagname);
