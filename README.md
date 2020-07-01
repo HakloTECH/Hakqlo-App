@@ -39,6 +39,8 @@ for the most cases you only type those three commands to upload your changes to 
 - `git commit -a -m 'your message'` (replace 'your message' to your message)
 - `git push origin master`
 
+if you need to type in github password every single time, 
+you should GOOGLE like this :'github ssh' and see articles. if you are done with the ssh setting, your problems should be solved. goodluck:wink:. lol
 ## To test PWA locally, 
 use the following command to enable https local hosting.
 
