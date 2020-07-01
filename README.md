@@ -41,7 +41,9 @@ for the most cases you only type those three commands to upload your changes to 
 
 if you need to type in github password every single time, 
 you should GOOGLE like this :'github ssh' and see articles. if you are done with the ssh setting, your problems should be solved. goodluck:wink:. lol
-## To test PWA locally, 
+
+
+## To make your localhost work in HTTPS protocol, 
 use the following command to enable https local hosting.
 
 Firstly, install mkcert. -> https://github.com/FiloSottile/mkcert (you can find some instructions for installing)
