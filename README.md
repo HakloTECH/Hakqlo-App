@@ -24,13 +24,13 @@ npm i
 For details, please see our google keep
 
 - add xtermjs
-- develop gesture triggering library
+- develop gesture-triggering library
 - firebase authentication
 - device & browser detection and show popup for each environment for installation instruction. 
   - i.e. 
     - IOS & safari -> show popup for instruction
     - android & chrome -> just do install process.
-    - mobile but doesn't support PWA -> show popup to say you should use 
+    - mobile but doesn't support PWA -> show popup to say you should use appropriate browser or OS version.
     - and so on....
 - push notification(Using API & using IOS way)
 ## commands 
