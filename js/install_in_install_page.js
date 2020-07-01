@@ -1,6 +1,6 @@
 import {init as basicInit} from "./baseFunctions";
 import runtime from 'serviceworker-webpack-plugin/lib/runtime';
-import anime from 'animejs';
+import anime from 'animejs/lib/anime.es.js';
 //import '../node_modules/dialog-polyfill/dist/dialog-polyfill.css';
 import '../css/main.scss';
 import '../css/main_in_install_page.scss';
@@ -18,52 +18,71 @@ and which is called everytime in index.html
 basicInit(window);
 /*background animation*/
 const canvas = document.querySelector('canvas');
+const fitCanvasToScreen = () =>{
+  canvas.width = document.body.clientWidth;
+  canvas.height = document.body.clientHeight;
+}
+fitCanvasToScreen();
+window.addEventListener('resize',e=>{
+  fitCanvasToScreen();
+  drawMain();
+})
 const ctx = canvas.getContext('2d');
-const backGradVectorYPos = {
+let backGradVectorYPos = {
   vStart: 0,
   vEnd: canvas.height*3,
 };
-
+let animateStarted = false;
 const drawMain = () =>{
-  const backgroundGradient = ctx.createLinearGradient(0,backGradVectorYPos.vStart, canvas.height*3,backGradVectorYPos.vEnd);
+  ctx.beginPath();
+  const backgroundGradient = ctx.createLinearGradient(0,backGradVectorYPos.vStart, canvas.width,backGradVectorYPos.vEnd);
   backgroundGradient.addColorStop(0, 'black');
   backgroundGradient.addColorStop(1/3, 'rgb(10, 15, 85)');
   backgroundGradient.addColorStop(2/3, 'rgb(18, 104, 218)');
   backgroundGradient.addColorStop(1, 'rgb(248, 102, 253)');
   ctx.fillStyle = backgroundGradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.closePath();
 }
+const maxParticleRad = Math.min(canvas.width,canvas.height)*0.08;
 class BackAnimatingParticle{
   constructor(){
     this.x = Math.random()*canvas.width;
     this.y = canvas.height + Math.random()*canvas.height;
-    this.radius = Math.random()*7+2;
+    this.radius = Math.random()*maxParticleRad+1;
+    this.color = `rgba(255, 255, 255, ${(1-this.radius/maxParticleRad)**2})`;
+    const v = this.radius*0.3;
+    this.xVel = v*Math.random()*0.5;
+    this.yVel = v*Math.random()*0.5+0.5;
   }
   
   draw(){
-    const v = this.radius*1;
-    this.x -= v*0.5;
-    this.y -= v*0.7;
-    if(this.x<=-10)this.x=canvas.width+10;
-    if(this.y<=-10)this.y=canvas.height+10;
-    //ctx.filter = `blur(${this.radius*0.1}px)`
-    ctx.fillStyle = 'white';
+    //const v = this.radius*0.5;
+    this.x -= this.xVel;
+    this.y -= this.yVel;
+    if(this.x<=-this.radius)this.x=canvas.width+this.radius;
+    if(this.y<=-this.radius)this.y=canvas.height+this.radius;
+    //ctx.filter = `blur(${this.radius*0.3}px)`
+    ctx.fillStyle = this.color;
+    ctx.beginPath();
     ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
     ctx.fill();
     ctx.filter = 'none';
-    
+    ctx.closePath();
     
   }
 }
+drawMain();
 let particleList = [];
 const animateAllParticles = ()=>{
   ctx.clearRect(0,0,canvas.width,canvas.height);
-  particleList.forEach(v=>v.draw());
   drawMain();
+  particleList.forEach(v=>v.draw());
+  
   requestAnimationFrame(animateAllParticles);
 }
 
-for(let i=0;i<5;i++){
+for(let i=0;i<30;i++){
   particleList.push(new BackAnimatingParticle());
 }
 window.onappinstalled=()=>location.href="./index.html";
@@ -86,15 +105,19 @@ let installApp = () =>{
     //showInstallPrompt is a function 
     installButton.addEventListener('click', () => {
       document.body.classList.add('install_pressed');
-      requestAnimationFrame(animateAllParticles);
-      anime({
-        targets:backGradVectorYPos,
-        duration: 3000,
-        round: 1,
-        vStart: -canvas.height*2,
-        vEnd: canvas.height,
-        easing: 'ease',
-      })
+      if(!animateStarted){
+        animateStarted=true;
+        requestAnimationFrame(animateAllParticles);
+        anime({
+          targets: backGradVectorYPos,
+          duration: 1500,
+          //round: 1,
+          vStart: [0,-canvas.height*2],
+          vEnd: [canvas.height*3,canvas.height],
+          easing: 'easeInOutSine',
+        })
+      }
+      
     });
     if ("onbeforeinstallprompt" in window) {
       window.addEventListener("beforeinstallprompt", e => {
@@ -110,7 +133,7 @@ let installApp = () =>{
       //show a prompt exaplaining how to install(in IOS safari)
       installButton.addEventListener('click', () => {
         popup("Install", [
-          "You can install this App by adding to your home screen.",
+          "You can install Hakqlo App by adding this website to your home screen.",
           createElementFromHTML(`
               <ol>
               <li><div style='background-color: rgba(60, 138, 255, 0.911);

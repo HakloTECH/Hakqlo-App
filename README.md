@@ -20,13 +20,13 @@ We are using WebPack
 npm i
 ```
 ## TODO
+For details, please see our google keep
 
-move on this project into WebPack.
-add dialog-element-polyfill https://github.com/GoogleChrome/dialog-polyfill
-add xtermjs
-webpack auto SCSS into css
-webpack auto latest es into suitable version
-push notification(Using API & using IOS way)
+- add xtermjs
+- develop gesture triggering library
+- firebase authentication
+
+- push notification(Using API & using IOS way)
 
 ## To test PWA locally, 
 use the following command to enable https local hosting.
