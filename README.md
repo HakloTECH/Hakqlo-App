@@ -72,3 +72,6 @@ then you can make a https server locally.
 http-server -S -C cert.pem -o
 ```
 source: https://qiita.com/walkers/items/b90a97a99bbb27f6550f
+
+# In the end...
+  ...meh :expressionless:
