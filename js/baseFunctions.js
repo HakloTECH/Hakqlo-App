@@ -4,13 +4,15 @@ import dialogPolyfill from 'dialog-polyfill'
  * @param {string} title 
  * @param {Array.<(string|HTMLElement)>} contents 
  * @param {Object.<string, string>} buttons 
+ * @returns {string} 
  */
 const popup = (title, contents, buttons = { "OK": "ok" }) => {
   const previousDialogs = document.querySelectorAll("dialog");
   const thePreviousOneDialog = previousDialogs[previousDialogs.length - 1]
   previousDialogs.forEach(v => {
     v.setAttribute("class", "sent-back");
-  })/*
+  })
+  /*
     background-color: red;
     -webkit-mask: url(./icon/ios-safari-share-icon.svg) no-repeat center;
     mask: url(./icon/ios-safari-share-icon.svg) no-repeat center;*/

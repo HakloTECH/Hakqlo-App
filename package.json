@@ -1,8 +1,7 @@
 {
-  "name": "pwa",
+  "name": "haklo-app",
   "version": "1.0.0",
-  "description": "temp",
-  "main": "server.js",
+  "description": "app for hakqlo community",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --open --config webpack.dev.js",
