@@ -9,7 +9,7 @@
   "name": "Hakqlo App",
   "short_name": "Hakqlo",
   "display": "fullscreen",
-  "start_url": "./",
+  "start_url": "./index.html",
   "background_color": "#000000",
   "theme_color": "#000000",
   "description": "Hakqlo the technology community's PWA app"
