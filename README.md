@@ -1,5 +1,5 @@
-# PWATest
-app for Hakqlo community
+# Hakqlo PWA App
+this is an app for Hakqlo community. 
 
 # for Developers:
 please use "double spaces" indentation when code.
