@@ -27,6 +27,17 @@ For details, please see our google keep
 - firebase authentication
 
 - push notification(Using API & using IOS way)
+## commands 
+### npm 
+- `npm run build` - builds optimized files in dist/
+- `npm run start` - runs dev server. it's useful. please use this when yu want to develop and see the changes instantly.
+- `npm run watch` - this is similar to above but it does not start a server and open browser. use this when you don't need to see the changes in browser.
+- `npm run deploy` - it runs `npm run build` and deploys to Github Page.
+### git 
+for the most cases you only type those three commands to upload your changes to github. (this uploads developing source to github, and `npm run deploy` will upload the compiled ones.(i.e. files in dist/))
+- `git add . `
+- `git commit -a -m 'your message'` (replace 'your message' to your message)
+- `git push origin master`
 
 ## To test PWA locally, 
 use the following command to enable https local hosting.
