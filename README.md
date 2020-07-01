@@ -45,8 +45,8 @@ for the most cases you only type those three commands to upload your changes to 
 - `git commit -a -m 'your message'` (replace 'your message' to your message)
 - `git push origin master`
 
-if you need to type in github password every single time, 
-you should GOOGLE like 'github ssh' and see the articles that you find. if you are done with the ssh setting, your problems should be solved. goodluck:wink: lol
+#### if you need to type in github password every single time...
+you should GOOGLE like 'github ssh' and see the articles that you find. if you are done with the ssh setting, your problems should be solved. goodluck:wink:  lol
 
 
 ## To make your localhost work in HTTPS protocol, 
