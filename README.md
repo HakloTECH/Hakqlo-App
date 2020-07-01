@@ -9,12 +9,12 @@ If you don't know how to, ask in our Discord channel.
 We are using WebPack
 
 ## file structure
-`
+```
 ├── css/
 │   ├── 
 │   └──
 ├── dist/   ->compiled files
-`
+```
 ## First step
 
 ```bash
