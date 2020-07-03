@@ -1,11 +1,18 @@
+let splashDuration = 3000;
+let splashAction = () =>{
+  startupscreen.setAttribute("class","clear");
+}
 document.addEventListener("DOMContentLoaded",()=>{
-    let startupscreen = document.querySelector("#startup");
-    window.addEventListener("load",(e)=>{
-        startupscreen.setAttribute("class","clear");
-        setTimeout(()=>{
-            startupscreen.remove();
-        },3000)
-    });
+  let startupscreen = document.querySelector("#startup");
+  window.addEventListener("load",(e)=>{
+    
+    splashAction();
+    //
+
+    setTimeout(()=>{
+      startupscreen.remove();
+    },splashDuration);
+  });
 })
 
 /*

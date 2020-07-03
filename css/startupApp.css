@@ -5,7 +5,7 @@
 
 #startup {
   position: fixed;
-  background-color: var(--theme-color);
+  background-color: transparent;
   display: flex;
   z-index: 10;
   justify-content: center;

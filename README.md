@@ -36,7 +36,7 @@ For details, please see our google keep
 ## commands 
 ### npm 
 - `npm run build` - builds optimized files in dist/
-- `npm run start` - runs dev server. it's useful. please use this when yu want to develop and see the changes instantly.
+- `npm run start` - runs dev server and opens index.html on browser. it's useful. please use this when yu want to develop and see the changes instantly.
 - `npm run watch` - this is similar to above but it does not start a server and open browser. use this when you don't need to see the changes in browser.
 - `npm run deploy` - it runs `npm run build` and deploys to Github Page.
 ### git 
@@ -50,6 +50,8 @@ you should GOOGLE like 'github ssh' and see the articles that you find. if you a
 
 
 ## To make your localhost work in HTTPS protocol, 
+when I test in dev-server there was no problem testing in localhost-http protocol so you can (should) ignore the following, it is only for ones who got interested.
+
 use the following command to enable https local hosting.
 
 Firstly, install mkcert. -> https://github.com/FiloSottile/mkcert (you can find some instructions for installing)

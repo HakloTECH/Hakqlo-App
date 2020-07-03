@@ -92,7 +92,7 @@ let installApp = () =>{
   if ('serviceWorker' in navigator) {
     //navigator.serviceWorker.register('./sw.js')
     runtime.register().then(function() {
-      console.log('sucsessed');
+      console.log('succeeded');
       
       //location.href+="/pwa.html";
     }).catch(function(err) {

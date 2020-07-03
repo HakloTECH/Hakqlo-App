@@ -41,13 +41,14 @@ module.exports = {
         'icon/ios-safari-share-icon.svg',
         'icon/install.svg',
       ],
+      
     }),
     new WebpackPwaManifest({
       filename: "manifest.webmanifest",
       orientation: 'omit',
       short_name: "Hakqlo",
       name: "Hakqlo App",
-      start_url: "./",
+      start_url: "./index.html",
       display: "fullscreen",
       background_color: "#000000",
       theme_color: "#000000",

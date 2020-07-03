@@ -1,8 +1,14 @@
 @import '../node_modules/dialog-polyfill/dist/dialog-polyfill.css';
+@import '../node_modules/xterm/css/xterm.css';
+@import 'back-terminal.scss';
 :root{
   --scroll-origin:0px;
   --finger-highlight-origin:0px;
   --theme-color: #000000;
+  --safe-area-top: env(safe-area-inset-top);
+  --safe-area-right: env(safe-area-inset-right);
+  --safe-area-bottom: env(safe-area-inset-bottom);
+  --safe-area-left: env(safe-area-inset-left);
 }
 html, body {
   position:fixed;
