@@ -1,5 +1,5 @@
 # Hakqlo PWA App
-this is an app for Hakqlo community. 
+this is an official app for Hakqlo community. 
 
 # for Developers:
 when you type in indentations, please use "double space" indentation.
