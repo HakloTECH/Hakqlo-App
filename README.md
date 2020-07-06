@@ -73,8 +73,8 @@ you should GOOGLE like 'github ssh' and see the articles that you find. if you a
 ## To make your localhost work in HTTPS protocol, 
 when I test in dev-server there was no problem testing in the localhost-HTTP protocol so you can (should) ignore the following, it is for only the case that you have gotten interested. 
 
-=======================================
-/n
+=======================================\
+
 use the following command to enable https local hosting.
 
 Firstly, install mkcert. -> https://github.com/FiloSottile/mkcert (you can find some instructions for installing)
