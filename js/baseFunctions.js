@@ -6,7 +6,18 @@ import dialogPolyfill from 'dialog-polyfill'
  * @param {Object.<string, string>} buttons 
  * @returns {string} 
  */
-const popup = (title, contents, buttons = { "OK": "ok" }) => {
+window.importExternal=(url) =>{
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = url;
+    script.async = true;
+    script.onload = () => resolve(window['external_global_component']);
+    script.onerror = reject;
+
+    document.body.appendChild(script);
+  });
+}
+window.popup = (title, contents, buttons = { "OK": "ok" }) => {
   const previousDialogs = document.querySelectorAll("dialog");
   const thePreviousOneDialog = previousDialogs[previousDialogs.length - 1]
   previousDialogs.forEach(v => {
@@ -63,18 +74,20 @@ const popup = (title, contents, buttons = { "OK": "ok" }) => {
     setTimeout(() => dialog.showModal(), 100);
   })
 }
-const createElementFromHTML = (htmlString) => {
+window.createElementFromHTML = (htmlString) => {
   var div = document.createElement('div');
   div.innerHTML = htmlString.trim();
 
   // Change this to div.childNodes to support multiple top-level nodes
   return div.firstChild;
 }
+/*
 export function init(window){
   window.popup = popup;
   window.createElementFromHTML = createElementFromHTML;
+  window.importExternal = importExternal;
 }
-/*
+
 popup("Install",[
     createElementFromHTML(`
         <div><div style='background-color: red;

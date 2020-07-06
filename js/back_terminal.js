@@ -1,8 +1,8 @@
 import { Terminal } from 'xterm';
 import { FitAddon } from 'xterm-addon-fit';
-import {setCoordinate, startRain, stopRain} from './codeRain';
+//import {setCoordinate, startRain, stopRain} from './codeRain';
 let blankLinesTop = 0, blankSpacesLeft = 0;
-const term = new Terminal();
+window.term = new Terminal();
 const fitAddon = new FitAddon();
 term.loadAddon(fitAddon);
 term.open(document.querySelector('#xterm_container'));
@@ -17,8 +17,7 @@ window.addEventListener("DOMContentLoaded",()=>{
     const warn = console.warn;
     const error = console.error;
     const agjustCursorPos = ()=>{
-      if(term.buffer.baseY<=blankLinesTop)
-      term.write(`\x1b[;${blankSpacesLeft+1}H`)
+      if(term.buffer.baseY<=blankLinesTop) term.write(`\x1b[;${blankSpacesLeft+1}H`);
     }
     console.log = (...args) =>{
       log(args.join(' '));
@@ -39,8 +38,9 @@ window.addEventListener("DOMContentLoaded",()=>{
       
     }
   })(globalThis.console)
-})
+})/*
 window.addEventListener("load",()=>{
   setCoordinate();
   startRain();
 })
+*/

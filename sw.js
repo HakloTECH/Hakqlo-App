@@ -22,11 +22,11 @@ console.log=(...args)=>{
 }
 self.addEventListener('install', function(event) {
   event.waitUntil(
-  caches.open(CACHE_NAME)
-  .then((cache)=> {
-    console.log('[ServiceWorker] Pre-caching offline page');
-    return cache.addAll(FILES_TO_CACHE.map(url => new Request(url, {credentials: 'same-origin'})));
-  })
+    caches.open(CACHE_NAME)
+    .then((cache)=> {
+      console.log('[ServiceWorker] Pre-caching offline page');
+      return cache.addAll(FILES_TO_CACHE.map(url => new Request(url, {credentials: 'same-origin'})));
+    })
   );
 });
 
@@ -48,16 +48,16 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('fetch', function(evt) {
   const reqLogText = "request file:"+evt.request.url;
   evt.respondWith(
-  caches.match(evt.request).then(res=>{
-    if(res!=null){
-      console.log(reqLogText+"\n ...cache exists");
-      return res;
-    }else{
-      console.warn(reqLogText+"\n ...cache didn't exit");
-      return fetch(evt.request);
-    }
-    
-  })
+    caches.match(evt.request).then(res=>{
+      if(res!=null){
+        console.log(reqLogText+"\n ...cache exists");
+        return res;
+      }else{
+        console.warn(reqLogText+"\n ...cache didn't exit");
+        return fetch(evt.request);
+      }
+      
+    })
   );
   
 });

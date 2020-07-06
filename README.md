@@ -2,18 +2,39 @@
 this is an app for Hakqlo community. 
 
 # for Developers:
-please use "double spaces" indentation when code.
-you should change settings of indentation in order to do this.
+when you type in indentations, please use "double space" indentation.
+you can change the setting of indentation in VS Code.
 If you don't know how to, ask in our Discord channel.
 
 We are using WebPack
 
 ## file structure
 ```
-├── css/
-│   ├── 
-│   └──
-├── dist/   ->compiled files
+.
+├── 404.html
+├── LICENSE
+├── README.md
+├── css
+│   └── <SCSS/CSS files>
+├── dist
+│   └──<compiled files!>
+├── icon
+│   └── <OGP, SVG icons, PNG images, etc>
+├── old_backups
+│   └── <it is for leaving old-backup files just in case>
+├── index.html -> <app main page>
+├── install.html -> <app install page>
+├── js
+│   └── <JS files>
+├── package-lock.json
+├── package.json
+├── sw.js -> <service worker script>
+├── test
+│   └── <directory for testing> 
+├── webpack.common.js -> <build configuration file>
+├── webpack.dev.js -> <build configuration file for development>
+└── webpack.prod.js -> <build configuration file for production>
+
 ```
 ## First step
 
@@ -50,8 +71,9 @@ you should GOOGLE like 'github ssh' and see the articles that you find. if you a
 
 
 ## To make your localhost work in HTTPS protocol, 
-when I test in dev-server there was no problem testing in localhost-http protocol so you can (should) ignore the following, it is only for ones who got interested.
+when I test in dev-server there was no problem testing in the localhost-HTTP protocol so you can (should) ignore the following, it is for only the case that you have gotten interested. 
 
+=======================================
 use the following command to enable https local hosting.
 
 Firstly, install mkcert. -> https://github.com/FiloSottile/mkcert (you can find some instructions for installing)
@@ -76,4 +98,4 @@ http-server -S -C cert.pem -o
 source: https://qiita.com/walkers/items/b90a97a99bbb27f6550f
 
 # In the end...
-  ...meh :expressionless:
+  I like ramen.

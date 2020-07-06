@@ -1,19 +1,27 @@
-let splashDuration = 3000;
-let splashAction = () =>{
-  startupscreen.setAttribute("class","clear");
-}
-document.addEventListener("DOMContentLoaded",()=>{
-  let startupscreen = document.querySelector("#startup");
-  window.addEventListener("load",(e)=>{
-    
-    splashAction();
-    //
+const STARTUP_SCRIPT = 'https://drive.google.com/uc?export=view&id=1pZxb0cPI9bsBanv8lqmBEPBEA68wuidU';
+let splashDuration, splashAction;
+window.importExternal(STARTUP_SCRIPT).then(v=>{
+  splashDuration = v.splashDuration;
+  splashAction = v.splashAction;
+  //document.addEventListener("DOMContentLoaded",()=>{
+    let startupscreen = document.querySelector("#startup");
+    window.addEventListener("load",(e)=>{
+      console.log('load happened')
+      splashAction(startupscreen);
+      //
 
-    setTimeout(()=>{
-      startupscreen.remove();
-    },splashDuration);
-  });
+      setTimeout(()=>{
+        startupscreen.remove();
+        console.log('willbe removed in '+splashDuration+'ms')
+      },splashDuration);
+    });
+  //})
 })
+//let splashDuration = 3000;
+//let splashAction = () =>{
+  //startupscreen.setAttribute("class","clear");
+//}
+
 
 /*
 .addEventListener('transitionend', (event) => {

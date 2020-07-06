@@ -1,4 +1,4 @@
-import {init as basicInit} from "./baseFunctions";
+import "./baseFunctions";
 import runtime from 'serviceworker-webpack-plugin/lib/runtime';
 import anime from 'animejs/lib/anime.es.js';
 //import '../node_modules/dialog-polyfill/dist/dialog-polyfill.css';
