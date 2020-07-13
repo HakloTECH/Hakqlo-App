@@ -2,12 +2,14 @@
   "name": "haklo-app",
   "version": "1.0.0",
   "description": "app for hakqlo community",
+  "homepage": "https://hakqlo.github.io/Hakqlo-App/",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "watch": "webpack --watch",
     "deploy": "npm run build && gh-pages -d dist",
-    "push": "git add . && git commit -a -m 'from_npm'$2 && git push"
+    "push": "git add . && git commit -a -m '$2' && git push",
+    "ttttt": "echo "
   },
   "author": "Ichigo",
   "license": "MIT",

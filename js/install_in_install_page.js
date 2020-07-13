@@ -39,7 +39,7 @@ const drawMain = () =>{
   backgroundGradient.addColorStop(0, 'black');
   backgroundGradient.addColorStop(1/3, 'rgb(10, 15, 85)');
   backgroundGradient.addColorStop(2/3, 'rgb(18, 104, 218)');
-  backgroundGradient.addColorStop(1, 'rgb(248, 102, 253)');
+  backgroundGradient.addColorStop(1, 'rgb(207, 106, 156)');
   ctx.fillStyle = backgroundGradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.closePath();

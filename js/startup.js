@@ -1,6 +1,7 @@
+import { require } from './web_require';
 const STARTUP_SCRIPT = 'https://drive.google.com/uc?export=view&id=1pZxb0cPI9bsBanv8lqmBEPBEA68wuidU';
 let splashDuration, splashAction;
-window.importExternal(STARTUP_SCRIPT).then(v=>{
+__non_webpack_require__(STARTUP_SCRIPT).then(v=>{
   splashDuration = v.splashDuration;
   splashAction = v.splashAction;
   //document.addEventListener("DOMContentLoaded",()=>{
