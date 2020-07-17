@@ -16,7 +16,7 @@
   "dependencies": {
     "animejs": "^3.2.0",
     "dialog-polyfill": "^0.5.1",
-    "xterm": "^4.7.0",
+    "xterm": "^4.8.1",
     "xterm-addon-fit": "^0.4.0"
   },
   "devDependencies": {
@@ -30,7 +30,7 @@
     "html-webpack-plugin": "^4.3.0",
     "mini-css-extract-plugin": "^0.9.0",
     "minimist": "^1.2.5",
-    "sass": "^1.26.9",
+    "sass": "^1.26.10",
     "sass-loader": "^8.0.2",
     "serviceworker-webpack-plugin": "^1.0.1",
     "style-loader": "^1.2.1",
