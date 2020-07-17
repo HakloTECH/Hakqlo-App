@@ -135,7 +135,7 @@ let installApp = () =>{
           "You can install Hakqlo App by adding this website to your home screen.",
           createElementFromHTML(`
               <ol>
-              <li> Tap the <div style='background-color: rgba(60, 138, 255, 0.911);
+              <li> Tap the <div style='background-color: rgba(0, 102, 255, 0.911);
               -webkit-mask: url(${require('../icon/ios-safari-share-icon.svg').default}) no-repeat center;
               mask: url(${require('../icon/ios-safari-share-icon.svg').default}) no-repeat center;width: 28px;
               height: 28px;'></div> icon at the bottom of your browser</li>
