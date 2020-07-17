@@ -139,10 +139,10 @@ let installApp = () =>{
               <li><div style='background-color: rgba(60, 138, 255, 0.911);
               -webkit-mask: url(${require('../icon/ios-safari-share-icon.svg').default}) no-repeat center;
               mask: url(${require('../icon/ios-safari-share-icon.svg').default}) no-repeat center;width: 28px;
-              height: 28px;'></div> press share button</li><li><div style='background-color: white;
+              height: 28px;'></div> tap the 'share' icon at the bottom of your browser</li><li><div style='background-color: white;
             -webkit-mask: url(${require('../icon/ios-safari-add-to-home-icon.svg').default}) no-repeat center;
             mask: url(${require('../icon/ios-safari-add-to-home-icon.svg').default}) no-repeat center;width: 28px;
-            height: 28px;'></div> then press 'add to home' button</li></ol>
+            height: 28px;'></div> then choose 'Add to Home Screen'.</li></ol>
         `)]).catch(e => console.warn(e))
       })
       /*
