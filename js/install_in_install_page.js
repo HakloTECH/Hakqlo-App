@@ -15,7 +15,6 @@ install.js is for interacting with service worker
 and which is called everytime in index.html
 */
 
-basicInit(window);
 /*background animation*/
 const canvas = document.querySelector('canvas');
 const fitCanvasToScreen = () =>{
