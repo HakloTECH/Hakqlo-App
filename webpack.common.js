@@ -143,15 +143,6 @@ module.exports = {
                 type: 'srcset',
               },
               {
-                tag: 'meta',
-                attribute: 'content',
-                type: 'src',
-                filter: (tag, attribute, attributes, resourcePath) => {
-                  if(attributes.property==='og:image')return true;
-                  return false;
-                }
-              },
-              {
                 tag: 'link',
                 attribute: 'href',
                 type: 'src',
