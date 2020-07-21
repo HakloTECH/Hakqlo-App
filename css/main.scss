@@ -1,7 +1,7 @@
-@import '../node_modules/dialog-polyfill/dist/dialog-polyfill.css';
 @import './dialog.scss';
 @import '../node_modules/xterm/css/xterm.css';
 @import 'back-terminal.scss';
+@import './lang.scss';
 :root{
   --scroll-origin:0px;
   --finger-highlight-origin:0px;

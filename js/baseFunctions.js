@@ -1,45 +1,32 @@
 import dialogPolyfill from 'dialog-polyfill'
 
+/**
+ * 
+ * @param {string} url 
+ * @param {Object} fetch_option 
+ */
 window.runExternal = (
-  url, 
-  safeObjects = {
-    window:{},
-    document: {},
+  url,
+  fetch_option={
+    method: 'GET',
+    headers: {
+      'Content-Type': 'text/javascript'
+    },
+    mode: 'cors',
   }
 ) =>{
   return new Promise((resolve, reject) => {
-    fetch(url,{
-      method: 'GET',
-      headers: {
-        'Content-Type': 'text/javascript'
-      },
-      mode: 'cors',
-    }).then(r=>r.text()).then(t=>
-      (function(window, document){
-        //execute the user code in safe scope(window, document object is overridden)
-        resolve(eval(t));
-      })({},{})
-    ).catch(e=>{
-      reject(e);
-    })
-    /*
-    const script = document.createElement('script');
-    script.src = url;
-    script.async = true;
-    script.onload = () => resolve(window['external_global_component']);
-    script.onerror = reject;
-
-    document.body.appendChild(script);*/
-  });
+    fetch(url,fetch_option).then(r=>r.text()).then(t=>resolve(eval(t))).catch(e=>reject(e));
+  })
 }
 /**
  * 
  * @param {string} title 
  * @param {Array.<(string|HTMLElement)>} contents 
  * @param {Object.<string, string>} buttons 
- * @returns {string} 
+ * @returns {Promise.<string>} 
  */
-window.popup = (title, contents, buttons = { "OK": "ok" }) => {
+window.popup = (title='', contents=[], buttons = { "OK": "ok" }) => {
   const previousDialogs = document.querySelectorAll("dialog");
   const thePreviousOneDialog = previousDialogs[previousDialogs.length - 1]
   previousDialogs.forEach(v => {

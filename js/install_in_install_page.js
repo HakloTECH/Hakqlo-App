@@ -134,16 +134,17 @@ let installApp = () =>{
         popup("Install", [
           "You can install Hakqlo App by adding this website to your home screen.",
           createElementFromHTML(`
-              <ol>
-              <li> Tap the <div style='background-color: rgba(56, 172, 255, 0.91);
-              -webkit-mask: url(${require('../icon/ios-safari-share-icon.svg').default}) no-repeat center;
-              mask: url(${require('../icon/ios-safari-share-icon.svg').default}) no-repeat center;width: 28px;
-              height: 28px;'></div> icon at the bottom of your browser</li>
-              <li> Choose <div style='background-color: white;
+            <ol>
+            <li> Tap the <div style='background-color: rgba(56, 172, 255, 0.91);
+            -webkit-mask: url(${require('../icon/ios-safari-share-icon.svg').default}) no-repeat center;
+            mask: url(${require('../icon/ios-safari-share-icon.svg').default}) no-repeat center;width: 28px;
+            height: 28px;'></div> icon at the bottom of your browser</li>
+            <li> Choose <div style='background-color: white;
             -webkit-mask: url(${require('../icon/ios-safari-add-to-home-icon.svg').default}) no-repeat center;
             mask: url(${require('../icon/ios-safari-add-to-home-icon.svg').default}) no-repeat center;width: 28px;
             height: 28px;'></div> 'Add to Home Screen'.</li></ol>
-        `)]).catch(e => console.warn(e))
+          `)
+        ]).catch(e => console.warn(e))
       })
       /*
 

@@ -14,6 +14,7 @@ module.exports = {
   output: {
     filename: '[name].[hash].js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: './',
   },
   plugins: [
     new MiniCssExtractPlugin(),
@@ -140,6 +141,15 @@ module.exports = {
                 tag: 'img',
                 attribute: 'data-srcset',
                 type: 'srcset',
+              },
+              {
+                tag: 'meta',
+                attribute: 'content',
+                type: 'src',
+                filter: (tag, attribute, attributes, resourcePath) => {
+                  if(attributes.property==='og:image')return true;
+                  return false;
+                }
               },
               {
                 tag: 'link',
