@@ -1,7 +1,7 @@
 {
   "icons": [
     {
-      "src": "icon_200x200.aefd45e9fd81e73b655ea603cc06d2d1.svg",
+      "src": "./icon_200x200.aefd45e9fd81e73b655ea603cc06d2d1.svg",
       "sizes": "200x200",
       "type": "image/svg+xml"
     }
