@@ -2,18 +2,19 @@ var serviceWorkerOption = {
   "assets": [
     "./9c0ed517f8f6c38321546d47e353d3c8.svg",
     "./2169919dec52ee59e0066c7042d4e7cf.png",
+    "./c15a083c3953560c96fb6123833f8712.png",
     "./78492f0a1915464b90c8acc9c91b67cb.scss",
     "./0e3295e4662107e65d1f8f13f4ba967c.svg",
     "./2bfa27340655858f8ebb60b791e8debb.svg",
     "./78492f0a1915464b90c8acc9c91b67cb.css",
     "./43753b6d70284ce6a52997185c34c02a.svg",
-    "./runtime.7db0406bbe0d6b1ba330.js",
+    "./runtime.25c30799ceca23216eba.js",
     "./vendors.css",
-    "./vendors.7db0406bbe0d6b1ba330.js",
+    "./vendors.25c30799ceca23216eba.js",
     "./app.css",
-    "./app.7db0406bbe0d6b1ba330.js",
+    "./app.25c30799ceca23216eba.js",
     "./install.css",
-    "./install.7db0406bbe0d6b1ba330.js",
+    "./install.25c30799ceca23216eba.js",
     "./index.html"
   ]
 };
