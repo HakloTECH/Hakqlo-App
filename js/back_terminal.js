@@ -11,6 +11,7 @@ window.addEventListener('resize',e=>{
   fitAddon.fit();
   term.write('resized...\n\x1b[1G');
 })
+
 window.addEventListener("DOMContentLoaded",()=>{
   ((console)=>{
     const log = console.log;
@@ -37,6 +38,10 @@ window.addEventListener("DOMContentLoaded",()=>{
       term.write('\x1b[31m'+args.join(' ')+'\x1b[0m\n\x1b[1G');
       
     }
+    secretizeFunc(console.log, 'log');
+    secretizeFunc(console.warn, 'warn');
+    secretizeFunc(console.error, 'error');
+    
   })(globalThis.console)
 })/*
 window.addEventListener("load",()=>{

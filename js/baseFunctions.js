@@ -90,6 +90,9 @@ window.createElementFromHTML = (htmlString) => {
   // Change this to div.childNodes to support multiple top-level nodes
   return div.firstChild;
 }
+window.secretizeFunc = (func, fName) =>{
+  func.toString = () => `${fName}(){ [ secret code ] }`;
+}
 /*
 export function init(window){
   window.popup = popup;
