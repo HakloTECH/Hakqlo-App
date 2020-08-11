@@ -1,10 +1,11 @@
 import dialogPolyfill from 'dialog-polyfill'
-
+import anime from 'animejs/lib/anime.es.js';
 /**
  * 
  * @param {string} url 
  * @param {Object} fetch_option 
  */
+window.anime = anime;
 window.runExternal = (
   url,
   fetch_option={

@@ -1,4 +1,3 @@
-import anime from 'animejs/lib/anime.es.js';
 const STARTUP_SCRIPT = 'https://drive.google.com/uc?export=view&id=1pZxb0cPI9bsBanv8lqmBEPBEA68wuidU';
 //let splashDuration, splashAction;
 
@@ -25,7 +24,7 @@ fetch(STARTUP_SCRIPT,{
     window.addEventListener("load",(e)=>{
       console.log('load happened')
       splashAction(startupscreen,{
-        anime: anime,
+        anime: window.anime,
       });
       //
 

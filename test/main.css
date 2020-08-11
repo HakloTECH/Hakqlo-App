@@ -1,0 +1,13 @@
+#startup {
+  position: fixed;
+  background-color: transparent;
+  display: flex;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  transition: opacity 1s ease 2s;
+}
