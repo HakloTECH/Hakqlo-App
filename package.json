@@ -15,7 +15,7 @@
   "license": "MIT",
   "dependencies": {
     "animejs": "^3.2.0",
-    "dialog-polyfill": "^0.5.1",
+    "dialog-polyfill": "^0.5.3",
     "xterm": "^4.8.1",
     "xterm-addon-fit": "^0.4.0"
   },
@@ -36,7 +36,7 @@
     "style-loader": "^1.2.1",
     "svgo": "^1.3.2",
     "svgo-loader": "^2.2.1",
-    "webpack": "^4.43.0",
+    "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^4.2.2",
