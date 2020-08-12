@@ -8,7 +8,7 @@ const installProcess = (global) => {
     const { type, content } = e.data;
     switch (type) {
       case 'consoleLog':
-        console.log('sw:', content);
+        console.log('sw:', ...content);
         break;
 
       default:

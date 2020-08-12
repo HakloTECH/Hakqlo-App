@@ -1,10 +1,14 @@
 import { Terminal } from 'xterm';
 import { FitAddon } from 'xterm-addon-fit';
 import { updateSafeAreaSize } from './screenFunctions';
-import { format } from 'format-util'; 
+import format from 'format-util'; 
 //import {setCoordinate, startRain, stopRain} from './codeRain';
 
 window.term = new Terminal();
+window.hakqloApp = {
+  print: (...args)=>term.write(format(...args).replace(/\n/g,'\r\n')),
+  println: (...args)=>term.writeln(format(...args).replace(/\n/g,'\r\n')),
+}
 const fitAddon = new FitAddon();
 term.loadAddon(fitAddon);
 term.open(document.querySelector('#xterm_container'));
@@ -15,10 +19,7 @@ window.addEventListener('resize',e=>{
   updateSafeAreaSize();
   term.writeln('resized...');
 })
-window.hakqloApp = {
-  print: ()=>term.write(format(arguments).replace(/\n/g,'\r\n')),
-  println: ()=>term.writeln(format(arguments).replace(/\n/g,'\r\n')),
-}
+
 window.addEventListener("DOMContentLoaded",()=>{
   ((console)=>{
     const log = console.log;
