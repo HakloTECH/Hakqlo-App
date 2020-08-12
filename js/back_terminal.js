@@ -16,8 +16,8 @@ window.addEventListener('resize',e=>{
   term.writeln('resized...');
 })
 window.hakqloApp = {
-  print: ()=>term.write(format.apply(this,arguments).replace(/\n/g,'\r\n')),
-  println: ()=>term.writeln(format.apply(this,arguments).replace(/\n/g,'\r\n')),
+  print: ()=>term.write(format(arguments).replace(/\n/g,'\r\n')),
+  println: ()=>term.writeln(format(arguments).replace(/\n/g,'\r\n')),
 }
 window.addEventListener("DOMContentLoaded",()=>{
   ((console)=>{
