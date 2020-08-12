@@ -91,8 +91,9 @@ window.createElementFromHTML = (htmlString) => {
   // Change this to div.childNodes to support multiple top-level nodes
   return div.firstChild;
 }
-window.secretizeFunc = (func, fName) =>{
-  func.toString = () => `${fName}(){ [ secret code ] }`;
+window.secretizeFunc = (func) =>{
+  if(func.name)func.toString = () => `${func.name}(){ [ secret code ] }`;
+  else func.toString = () => `()=>{ [ secret code ] }`;
 }
 /*
 export function init(window){
