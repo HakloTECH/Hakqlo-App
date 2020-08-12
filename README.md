@@ -70,33 +70,5 @@ for the most cases you only type those three commands to upload your changes to 
 you should GOOGLE like 'github ssh' and see the articles that you find. if you are done with the ssh setting, your problems should be solved. goodluck:wink:  lol
 
 
-## To make your localhost work in HTTPS protocol, 
-when I test in dev-server there was no problem testing in the localhost-HTTP protocol so you can (should) ignore the following, it is for only the case that you have gotten interested. 
-
-=======================================  
-
-use the following command to enable https local hosting.
-
-Firstly, install mkcert. -> https://github.com/FiloSottile/mkcert (you can find some instructions for installing)
-then run the following command.
-```bash
-mkcert -install
-```
-in your project directory, run:
-```bash
-mkcert 0.0.0.0 localhost 127.0.0.1 ::1
-```
-Two files generated in your directory, and rename it.
-
-0.0.0.0+3-key.pem -> key.pem
-
-0.0.0.0+3.pem -> cert.pem
-
-then you can make a https server locally.
-```bash
-http-server -S -C cert.pem -o
-```
-source: https://qiita.com/walkers/items/b90a97a99bbb27f6550f
-
 # In the end...
   I like ramen.
