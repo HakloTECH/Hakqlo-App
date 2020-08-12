@@ -24,21 +24,21 @@ window.addEventListener("DOMContentLoaded",()=>{
       const arg = args.join(' ');
       log(arg);
       agjustCursorPos();
-      term.write('\x1b[33m'+arg.replace(/\\n/g,'\n\x1b[1G')+'\n\x1b[1G');
+      term.write('\x1b[33m'+arg.replace(/\n/g,'\n\x1b[1G')+'\n\x1b[1G');
       
     }
     console.warn = (...args) =>{
       const arg = args.join(' ');
       warn(arg);
       agjustCursorPos();
-      term.write('\x1b[33m'+arg.replace(/\\n/g,'\n\x1b[1G')+'\n\x1b[1G');
+      term.write('\x1b[33m'+arg.replace(/\n/g,'\n\x1b[1G')+'\n\x1b[1G');
       
     }
     console.error = (...args) =>{
       const arg = args.join(' ');
       error(arg);
       agjustCursorPos();
-      term.write('\x1b[33m'+arg.replace(/\\n/g,'\n\x1b[1G')+'\n\x1b[1G');
+      term.write('\x1b[33m'+arg.replace(/\n/g,'\n\x1b[1G')+'\n\x1b[1G');
       
     }
     secretizeFunc(console.log, 'log');
