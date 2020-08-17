@@ -17,7 +17,7 @@ updateSafeAreaSize();
 window.addEventListener('resize',e=>{
   fitAddon.fit();
   updateSafeAreaSize();
-  term.writeln('resized...');
+  hakqloApp.println('resized...');
 })
 
 window.addEventListener("DOMContentLoaded",()=>{

@@ -44,7 +44,7 @@ module.exports = {
       
     }),
     new WebpackPwaManifest({
-      filename: "manifest.webmanifest",
+      filename: "manifest-[hash].webmanifest",
       orientation: 'omit',
       short_name: "Hakqlo",
       name: "Hakqlo App",
@@ -59,8 +59,44 @@ module.exports = {
           src: path.resolve("./icon/logo008b.svg"),
           sizes: [200],
           type: "image/svg+xml"
+        },
+        {
+          //src: path.resolve("./icon/logo.svg"),
+          src: path.resolve("./icon/logo008b.png"),
+          sizes: [192,512],
+          type: "image/png"
+        },
+      ],
+      //below is just an copy-and-paste of an document sample,
+      //can be used for making app shortcut
+      //https://web.dev/app-shortcuts/
+      shortcuts: [
+        {
+          name: "shortcut 1",
+          short_name: "shortcut 1",
+          description: "hello",
+          url: "/play-later?utm_source=homescreen",
+          icons: [
+            {
+              src: "/icon/logo.png",
+              sizes: "192x192"
+            }
+          ]
+        },
+        {
+          name: "shortcut 2",
+          short_name: "shortcut 2",
+          description: "what's up boy",
+          url: "/subscriptions?utm_source=homescreen",
+          icons: [
+            {
+              src: "/icon/logo.png",
+              sizes: "192x192"
+            }
+          ]
         }
-      ],/*
+      ]
+      /*
       ios: {
         'apple-touch-icon': './src/imgs/ios-safari-add-to-home-icon.svg',
         'apple-mobile-web-app-status-bar-style': 'black-translucent',
