@@ -76,24 +76,28 @@ module.exports = {
           short_name: "shortcut 1",
           description: "hello",
           url: "./play-later?utm_source=homescreen",
+          /*
           icons: [
             {
-              src: "./icon/logo.png",
+              src: path.resolve("/icon/logo.png"),
               sizes: "192x192"
             }
           ]
+          */
         },
         {
           name: "shortcut 2",
           short_name: "shortcut 2",
           description: "what's up boy",
           url: "./subscriptions?utm_source=homescreen",
+          /*
           icons: [
             {
-              src: "./icon/logo.png",
+              src: path.resolve("/icon/logo.png"),
               sizes: "192x192"
             }
           ]
+          */
         }
       ]
       /*
