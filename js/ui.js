@@ -95,23 +95,41 @@ class AppWindow extends HTMLElement {
     this.updateIndex();
     //this.style.transform = `scale(${WSR}, ${WSR}) translateY( ${((WSR - 1)/WSR*50)}% )`;
     requestAnimationFrame(this.draw.bind(this));
+    const eventListenerOption = {
+      //capture: false,
+      //passive: false
+    }
+    const stopPropagationWhenListView = (e) =>{
+      if(this.ws.listView)e.stopPropagation();
+    }
     this.addEventListener('touchstart',e=>{
+      stopPropagationWhenListView(e);
       scrollXStart = e.changedTouches[0].screenX*scrollRatio;
       WLScrollXstart = WindowSystem.scrollLength;
       WindowSystem.container.classList.add('scrolling');
-    })
+    },eventListenerOption)
     this.addEventListener('touchmove',e=>{
-      WindowSystem.scrollTo(scrollXStart-e.changedTouches[0].screenX*scrollRatio+WLScrollXstart);
-    })
+      stopPropagationWhenListView(e);
+      const moveLength = scrollXStart-e.changedTouches[0].screenX*scrollRatio+WLScrollXstart;
+      if(WindowSystem.windowList.length===1 && (moveLength > 0.4 || moveLength < -0.4))return 0;
+      WindowSystem.scrollTo(moveLength);
+    },eventListenerOption)
     this.addEventListener('touchend',e=>{
+      stopPropagationWhenListView(e);
       WindowSystem.container.classList.remove('scrolling');
       WindowSystem.bringToCenter();
-    })
+    },eventListenerOption)
+    this.addEventListener('click',e=>{
+      stopPropagationWhenListView(e);
+      console.log('esdrftg');
+      WindowSystem.currentWin = this.winIndex;
+      WindowSystem.listView = false;
+    },eventListenerOption)
   }
   updateIndex(){
     //console.log(this.ws===WindowSystem)
     this.winIndex = this.ws.windowList.indexOf(this);
-    console.log('index from method:',this.winIndex);
+    //console.log('index from method:',this.winIndex);
   }
   draw(){
     //dis:2 -> 90deg -> Math.PI/2 ---> dis*Math.PI/4
@@ -131,7 +149,7 @@ class AppWindow extends HTMLElement {
       const wAngle = getDistenceFromCenter(this.winIndex, this.ws.scrollLength, this.ws.windowList.length)*Math.PI/4;
       const cosA = Math.cos(wAngle);
       this.style.transform = `scale(${WSR}, ${WSR}) translateZ(${(cosA-1)*70}px) translateX(${Math.sin(wAngle)*WXR}%)`
-      this.style.opacity = cosA;
+      this.style.opacity = cosA**2;
     }
     //setInterval(this.draw.bind(this),100);
     requestAnimationFrame(this.draw.bind(this));
@@ -141,9 +159,10 @@ customElements.define('app-window',AppWindow);
 
 let a1 = WindowSystem.add();
 //console.log('index of the win is ', WindowSystem.windowList.indexOf(a1));
-
-WindowSystem.add();
-WindowSystem.add();
+let aa = document.createElement('div')
+aa.onclick = ()=> alert('gyaaaabdhxjsa');
+aa.innerText = 'cfghejkdnbhs\nvgjckanbdsjwb\nhsdsjk'
+WindowSystem.add(aa);
 WindowSystem.add();
 
 //setInterval(()=>console.log(WindowSystem.scrollLength),100)

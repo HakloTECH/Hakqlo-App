@@ -1,7 +1,7 @@
 import { Terminal } from 'xterm';
 import { FitAddon } from 'xterm-addon-fit';
 import { updateSafeAreaSize } from './screenFunctions';
-import format from 'format-util'; 
+import { format } from './baseFunctions';
 //import {setCoordinate, startRain, stopRain} from './codeRain';
 
 window.term = new Terminal();
