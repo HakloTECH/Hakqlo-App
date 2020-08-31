@@ -6,6 +6,8 @@ import anime from 'animejs/lib/anime.es.js';
  * @param {Object} fetch_option 
  */
 window.anime = anime;
+const isInStandaloneMode = () => (window.matchMedia('(display-mode: standalone)').matches) || (window.matchMedia('(display-mode: fullscreen)').matches) || (window.navigator.standalone) || document.referrer.includes('android-app://');
+global.isPWA = isInStandaloneMode();
 window.runExternal = (
   url,
   fetch_option={

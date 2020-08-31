@@ -1,6 +1,16 @@
 const STARTUP_SCRIPT = 'https://drive.google.com/uc?export=view&id=1pZxb0cPI9bsBanv8lqmBEPBEA68wuidU';
-//let splashDuration, splashAction;
+let splashDuration = 100, splashAction;
+let startupscreen = document.querySelector("#startup");
+window.addEventListener("load",(e)=>{
+  console.log('load happened')
+  //
 
+  setTimeout(()=>{
+    startupscreen.remove();
+    console.log('willbe removed in '+splashDuration+'ms')
+  },splashDuration);
+});
+/*
 const myHeaders = new Headers();
 myHeaders.append('Content-Type', 'text/javascript');
 fetch(STARTUP_SCRIPT,{

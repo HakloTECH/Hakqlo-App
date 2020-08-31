@@ -1,8 +1,6 @@
 import runtime from 'serviceworker-webpack-plugin/lib/runtime';
 const installProcess = (global) => {
   // || (window.matchMedia('(display-mode: fullscreen)').matches) 
-  const isInStandaloneMode = () => (window.matchMedia('(display-mode: standalone)').matches) || (window.matchMedia('(display-mode: fullscreen)').matches) || (window.navigator.standalone) || document.referrer.includes('android-app://');
-  global.isPWA = isInStandaloneMode();
   global.portMain;
   const onMessage = e => {
     const { type, content } = e.data;

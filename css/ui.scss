@@ -1,0 +1,47 @@
+$WSR: 0.6; //window shrink ratio
+app-window {
+  position: fixed;
+  //top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255,255,255,0.7);
+  //transform: scale($WSR, $WSR) translateY( (($WSR - 1)/$WSR*50)+0% );
+  transform-origin: 50vw 0vh;
+  transition-duration: 0.3s;
+  &.focus {
+    transform: none;
+    opacity: 1;
+  }
+  &.away {
+    opacity: 0;
+  }
+  //below is for testing
+  &:nth-child(1n) {
+    background-color: green;
+  }
+  &:nth-child(2n) {
+    background-color: blue;
+  }
+  &:nth-child(3n) {
+    background-color: red;
+  }
+}
+#windowsContainer {
+  perspective: 300px;
+  position: fixed;
+  transform-style: preserve-3d;
+  z-index: 9;
+  transition: 0.5s;
+  visibility: visible;
+  &.away {
+    transform: translateY(-100vh) scale(2,2);
+    perspective: 50px;
+    visibility: hidden;
+  }
+  &.scrolling > app-window{
+    transition-duration: 0s;
+  }
+}
+
