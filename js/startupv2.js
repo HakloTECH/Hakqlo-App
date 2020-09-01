@@ -1,13 +1,15 @@
 const STARTUP_SCRIPT = 'https://drive.google.com/uc?export=view&id=1pZxb0cPI9bsBanv8lqmBEPBEA68wuidU';
-let splashDuration = 100, splashAction;
+let splashDuration = 1800, splashAction;
+const fadeoutTime = 700;
 let startupscreen = document.querySelector("#startup");
 window.addEventListener("load",(e)=>{
   console.log('load happened')
   //
 
   setTimeout(()=>{
-    startupscreen.remove();
-    console.log('willbe removed in '+splashDuration+'ms')
+    startupscreen.style.transition = fadeoutTime/1000 + 's';
+    startupscreen.style.opacity = 0;
+    setTimeout(()=>startupscreen.remove(),fadeoutTime)
   },splashDuration);
 });
 /*

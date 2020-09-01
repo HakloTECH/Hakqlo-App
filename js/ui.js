@@ -150,7 +150,7 @@ class AppWindow extends HTMLElement {
       const wAngle = getDistenceFromCenter(this.winIndex, this.ws.scrollLength, this.ws.windowList.length)*Math.PI/4;
       const cosA = Math.cos(wAngle);
       this.style.transform = `scale(${WSR}, ${WSR}) translateZ(${(cosA-1)*70}px) translateX(${Math.sin(wAngle)*WXR}%)`
-      if(!platform.safari)this.style.opacity = cosA**1.5;
+      this.style.opacity = cosA**1.5;
     }
     //setInterval(this.draw.bind(this),100);
     requestAnimationFrame(this.draw.bind(this));
