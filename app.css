@@ -6,7 +6,7 @@ dialog{position:fixed;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px
 
 #startup {
   position: fixed;
-  background-color: transparent;
+  background-color: black;
   display: flex;
   z-index: 10;
   justify-content: center;
