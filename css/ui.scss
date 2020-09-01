@@ -30,6 +30,7 @@ app-window {
 }
 #windowsContainer {
   perspective: 300px;
+  perspective-origin: 50vw -100vh;
   position: fixed;
   transform-style: preserve-3d;
   z-index: 9;
@@ -44,7 +45,8 @@ app-window {
     transition-duration: 0s;
   }
 }
+/*
 .safari #windowsContainer{
   transform-style: unset;
 }
-
+*/

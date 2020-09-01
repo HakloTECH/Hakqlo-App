@@ -1,3 +1,4 @@
+import platform from 'mini-platform-detect';
 window.WindowSystem = {
   windowList: [], // contains all windows
   currentWin: 0, // index num of the current window in windowList
@@ -72,7 +73,7 @@ const getDistenceFromCenter = (index, center, listLength) =>{
   return b_distance;
 }
 
-const WSR = 0.7;
+const WSR = 0.8;
 let scrollXStart=0;
 const WXR = 50;
 let scrollRatio = 100/screen.width/WSR/WXR;  //lol nobody would understant this including me. u multiple scroll length with this value u get change in scrollLength value.
@@ -149,7 +150,7 @@ class AppWindow extends HTMLElement {
       const wAngle = getDistenceFromCenter(this.winIndex, this.ws.scrollLength, this.ws.windowList.length)*Math.PI/4;
       const cosA = Math.cos(wAngle);
       this.style.transform = `scale(${WSR}, ${WSR}) translateZ(${(cosA-1)*70}px) translateX(${Math.sin(wAngle)*WXR}%)`
-      this.style.opacity = cosA**1.5;
+      if(!platform.safari)this.style.opacity = cosA**1.5;
     }
     //setInterval(this.draw.bind(this),100);
     requestAnimationFrame(this.draw.bind(this));
