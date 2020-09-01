@@ -44,4 +44,7 @@ app-window {
     transition-duration: 0s;
   }
 }
+.safari #windowsContainer{
+  transform-style: unset;
+}
 

@@ -121,7 +121,7 @@ class AppWindow extends HTMLElement {
     },eventListenerOption)
     this.addEventListener('click',e=>{
       stopPropagationWhenListView(e);
-      console.log('esdrftg');
+      //console.log('esdrftg');
       WindowSystem.currentWin = this.winIndex;
       WindowSystem.listView = false;
     },eventListenerOption)
@@ -149,7 +149,7 @@ class AppWindow extends HTMLElement {
       const wAngle = getDistenceFromCenter(this.winIndex, this.ws.scrollLength, this.ws.windowList.length)*Math.PI/4;
       const cosA = Math.cos(wAngle);
       this.style.transform = `scale(${WSR}, ${WSR}) translateZ(${(cosA-1)*70}px) translateX(${Math.sin(wAngle)*WXR}%)`
-      this.style.opacity = cosA**2;
+      this.style.opacity = cosA**1.5;
     }
     //setInterval(this.draw.bind(this),100);
     requestAnimationFrame(this.draw.bind(this));

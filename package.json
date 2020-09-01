@@ -17,6 +17,7 @@
     "animejs": "^3.2.0",
     "dialog-polyfill": "^0.5.3",
     "format-util": "^1.0.5",
+    "mini-platform-detect": "^0.1.0",
     "xterm": "^4.8.1",
     "xterm-addon-fit": "^0.4.0"
   },
