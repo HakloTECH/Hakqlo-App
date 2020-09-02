@@ -6,29 +6,29 @@ window.WindowSystem = {
   scrollLength:0, 
   _away: false,
   _listView: true,
-  init: function(){
+  init(){
     //this.away = true;
     //requestAnimationFrame(this.draw.bind(this));
   },
-  add: function(element){
+  add(element){
     const win = document.createElement('app-window');
     this.windowList.push(win);
     this.container.appendChild(win);
     element && win.appendChild(element);
     return win;
   },
-  draw: function(){
+  draw(){
     //this.windowList.forEach(v=>v.draw());
     //for(const i in this.windowList)this.windowList[i].draw();
     //requestAnimationFrame(this.draw.bind(this))
   },
-  scrollTo: function(l){
+  scrollTo(l){
     // 0 <= v < this.windowList.length
     //Math.sign(l)
     const v = l%this.windowList.length;
     this.scrollLength = v;
   },
-  bringToCenter: function(){
+  bringToCenter(){
     this.scrollLength = Math.round(this.scrollLength);
   },
   get away(){
@@ -73,9 +73,9 @@ const getDistenceFromCenter = (index, center, listLength) =>{
   return b_distance;
 }
 
-const WSR = 0.8;
+const WSR = 0.8; //window shrink ratio
 let scrollXStart=0;
-const WXR = 50;
+const WXR = 50; 
 let scrollRatio = 100/screen.width/WSR/WXR;  //lol nobody would understant this including me. u multiple scroll length with this value u get change in scrollLength value.
 let WLScrollXstart = 0;
 window.addEventListener('resize',()=>{
@@ -88,13 +88,11 @@ class AppWindow extends HTMLElement {
   ready = false;
   constructor(){
     super();
-    //this.updateIndex();
   }
   //when the object is added as DOM
   connectedCallback(){
     this.ready = true;
     this.updateIndex();
-    //this.style.transform = `scale(${WSR}, ${WSR}) translateY( ${((WSR - 1)/WSR*50)}% )`;
     requestAnimationFrame(this.draw.bind(this));
     const eventListenerOption = {
       //capture: false,
@@ -122,25 +120,20 @@ class AppWindow extends HTMLElement {
     },eventListenerOption)
     this.addEventListener('click',e=>{
       stopPropagationWhenListView(e);
-      //console.log('esdrftg');
       WindowSystem.currentWin = this.winIndex;
       WindowSystem.listView = false;
     },eventListenerOption)
   }
   updateIndex(){
-    //console.log(this.ws===WindowSystem)
     this.winIndex = this.ws.windowList.indexOf(this);
-    //console.log('index from method:',this.winIndex);
   }
   draw(){
     //dis:2 -> 90deg -> Math.PI/2 ---> dis*Math.PI/4
-    //console.log('connected, myself: ',this);
     
     if(this.ready===false){
       console.log('not ready');
       return 0;
     }
-    //this.style.cssText = `transform: translateZ(${(Math.cos(wAngle)-1)*50}%) translateX(${Math.sin(wAngle)*50}%)`
     if(this.classList.contains('focus')){
       this.style.transform = null;
       this.style.opacity = 1;
@@ -152,7 +145,6 @@ class AppWindow extends HTMLElement {
       this.style.transform = `scale(${WSR}, ${WSR}) translateZ(${(cosA-1)*70}px) translateX(${Math.sin(wAngle)*WXR}%)`
       this.style.opacity = cosA**1.5;
     }
-    //setInterval(this.draw.bind(this),100);
     requestAnimationFrame(this.draw.bind(this));
   }
 }
