@@ -166,6 +166,6 @@ let installApp = () =>{
     }else{
       popup('browser not supported',['sorry, your browser does not support PWA'])
     }
-  }else console.log('service worker not supported on your browser')
+  }else popup('browser not supported',['sorry, your browser does not support PWA'])
 }
 installApp();
