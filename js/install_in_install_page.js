@@ -1,4 +1,5 @@
 import "./baseFunctions";
+import platform from 'mini-platform-detect';
 import runtime from 'serviceworker-webpack-plugin/lib/runtime';
 import anime from 'animejs/lib/anime.es.js';
 //import '../node_modules/dialog-polyfill/dist/dialog-polyfill.css';
@@ -128,7 +129,7 @@ let installApp = () =>{
           e.prompt().then(r=>console.log(r));
         })
       })
-    } else if (true) {
+    } else if (platform.ios && platform.safari) {
       //show a prompt exaplaining how to install(in IOS safari)
       installButton.addEventListener('click', () => {
         popup("Install", [
