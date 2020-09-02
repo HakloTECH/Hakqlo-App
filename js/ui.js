@@ -73,7 +73,7 @@ const getDistenceFromCenter = (index, center, listLength) =>{
   return b_distance;
 }
 
-const WSR = 0.8; //window shrink ratio
+const WSR = 0.6; //window shrink ratio
 let scrollXStart=0;
 const WXR = 50; 
 let scrollRatio = 100/screen.width/WSR/WXR;  //lol nobody would understant this including me. u multiple scroll length with this value u get change in scrollLength value.
@@ -139,10 +139,11 @@ class AppWindow extends HTMLElement {
       this.style.opacity = 1;
     }else if(this.classList.contains('away')){
       this.style.opacity = 0;
+      this.style.transform = null;
     }else{
       const wAngle = getDistenceFromCenter(this.winIndex, this.ws.scrollLength, this.ws.windowList.length)*Math.PI/4;
       const cosA = Math.cos(wAngle);
-      this.style.transform = `scale(${WSR}, ${WSR}) translateZ(${(cosA-1)*70}px) translateX(${Math.sin(wAngle)*WXR}%)`
+      this.style.transform = `scale(${WSR}, ${WSR}) translateZ(${(cosA)*70}px) translateX(${Math.sin(wAngle)*WXR}%)`
       this.style.opacity = cosA**1.5;
     }
     requestAnimationFrame(this.draw.bind(this));
