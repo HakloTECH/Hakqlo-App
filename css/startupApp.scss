@@ -1,3 +1,8 @@
+//eiiii
+//im gonna delete this file later because 
+//i will make svg morphing version
+//instead of this bullshit
+
 :root {
   --startup-animation-logo-color: #00fdff;
   --startup-animation-logo-max-length: calc(max(50vh, 50vw) * 1.2)
@@ -5,6 +10,7 @@
 
 #startup {
   position: fixed;
+  transform-style: preserve-3d;
   background-color: black;
   display: flex;
   z-index: 100;
@@ -15,12 +21,27 @@
   width: 100vw;
   height: 100vh;
   transition: opacity 1s ease 2s;
+  > div{
+    position: relative;
+    background-color: black;
+    transform: translateZ(100px);
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+  }
 }
 
 #startup .centerTriangle {
-  position: fixed;
-  left: calc(50vw - 20px);
-  top: calc(50vh - 17.3205px);
+  position: relative;
+  left: 0;
+  top: calc(50vh - 44px);
+  //bottom: 50vh;
+  right: 0;
+  margin: auto;
   width: 0;
   height: 0;
   border-style: solid;
@@ -36,9 +57,12 @@
 #startup .container {
   position: fixed;
   left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
   width: 100vw;
   height: calc(17.3205px * 3);
-  top: 50vh;
   padding: 0 0;
   transform-origin: 50% 5.5px;
 }

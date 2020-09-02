@@ -81,7 +81,7 @@ let WLScrollXstart = 0;
 window.addEventListener('resize',()=>{
   scrollRatio = 100/screen.width/WSR/WXR;
 })
-//window.addEventListener('touchmove',e=>e.preventDefault(),false)
+//document.body.addEventListener('touchmove',e=>e.preventDefault(),false)
 class AppWindow extends HTMLElement {
   winIndex;
   ws = window.WindowSystem;
