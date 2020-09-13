@@ -24,7 +24,14 @@ app-window {
     width: 100%;
     height: 100%;
   }
+  > iframe{
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+  }
   //below is for testing
+  /*
   &:nth-child(1n) {
     background-color: green;
   }
@@ -33,7 +40,7 @@ app-window {
   }
   &:nth-child(3n) {
     background-color: red;
-  }
+  }*/
   .testing {
     position: absolute;
     left: 0px;

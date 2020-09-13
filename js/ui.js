@@ -94,7 +94,6 @@ class AppWindow extends HTMLElement {
   connectedCallback(){
     this.ready = true;
     this.updateIndex();
-    console.log(this.cover);
     this.appendChild(this.cover);
     this.cover.setAttribute('class','cover')
     //this.cover.className.add('cover');
@@ -126,12 +125,12 @@ class AppWindow extends HTMLElement {
       WindowSystem.container.classList.remove('scrolling');
       WindowSystem.bringToCenter();
     },eventListenerOption)
-    this.addEventListener('click',e=>{
+    /*this.addEventListener('click',e=>{
       console.log('window clicked')
-    },eventListenerOption)
+    },eventListenerOption)*/
     this.cover.addEventListener('click',e=>{
       stp(e);
-      console.log('window cover clicked')
+      //console.log('window cover clicked')
       WindowSystem.currentWin = this.winIndex;
       WindowSystem.listView = false;
     },eventListenerOption)
@@ -163,7 +162,12 @@ class AppWindow extends HTMLElement {
   }
 }
 customElements.define('app-window',AppWindow);
-
+window.open = function(url){
+  const iframe = document.createElement('iframe');
+  iframe.src = url;
+  WindowSystem.add(iframe)
+  return iframe.contentWindow;
+}
 let a1 = WindowSystem.add();
 //console.log('index of the win is ', WindowSystem.windowList.indexOf(a1));
 let aa = document.createElement('div')
@@ -171,6 +175,6 @@ aa.classList.add('testing')
 aa.onclick = ()=> alert('gyaaaabdhxjsa');
 aa.innerText = 'cfghejkdnbhs\nvgjckanbdsjwb\nhsdsjk'
 WindowSystem.add(aa);
-WindowSystem.add();
+open('https://hakqlo.github.io')
 
 //setInterval(()=>console.log(WindowSystem.scrollLength),100)
