@@ -9,6 +9,7 @@ window.addEventListener("load",(e)=>{
   setTimeout(()=>{
     startupscreen.style.transition = fadeoutTime/1000 + 's';
     startupscreen.style.opacity = 0;
+    window.WindowSystem.away = false;
     setTimeout(()=>startupscreen.remove(),fadeoutTime)
   },splashDuration);
 });

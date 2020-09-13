@@ -65,7 +65,7 @@ window.WindowSystem = {
     return this._listView;
   }
 }
-//window.WindowSystem.init();
+window.WindowSystem.away = true;
 const getDistenceFromCenter = (index, center, listLength) =>{
   const b_distance = index - center;
   if(Math.abs(b_distance)>Math.abs(b_distance+listLength)) return b_distance+listLength;
@@ -86,6 +86,7 @@ class AppWindow extends HTMLElement {
   winIndex;
   ws = window.WindowSystem;
   ready = false;
+  cover = document.createElement('div');
   constructor(){
     super();
   }
@@ -93,36 +94,48 @@ class AppWindow extends HTMLElement {
   connectedCallback(){
     this.ready = true;
     this.updateIndex();
+    console.log(this.cover);
+    this.appendChild(this.cover);
+    this.cover.setAttribute('class','cover')
+    //this.cover.className.add('cover');
     requestAnimationFrame(this.draw.bind(this));
     const eventListenerOption = {
       //capture: false,
       //passive: false
     }
-    const stopPropagationWhenListView = (e) =>{
-      if(this.ws.listView)e.stopPropagation();
+    const stp = (e) =>{
+      if(this.ws.listView){
+        e.stopPropagation();
+        //e.preventDefault();
+      }
     }
-    this.addEventListener('touchstart',e=>{
-      stopPropagationWhenListView(e);
+    this.cover.addEventListener('touchstart',e=>{
+      stp(e);
       scrollXStart = e.changedTouches[0].screenX*scrollRatio;
       WLScrollXstart = WindowSystem.scrollLength;
       WindowSystem.container.classList.add('scrolling');
     },eventListenerOption)
-    this.addEventListener('touchmove',e=>{
-      stopPropagationWhenListView(e);
+    this.cover.addEventListener('touchmove',e=>{
+      stp(e);
       const moveLength = scrollXStart-e.changedTouches[0].screenX*scrollRatio+WLScrollXstart;
       if(WindowSystem.windowList.length===1 && (moveLength > 0.4 || moveLength < -0.4))return 0;
       WindowSystem.scrollTo(moveLength);
     },eventListenerOption)
-    this.addEventListener('touchend',e=>{
-      stopPropagationWhenListView(e);
+    this.cover.addEventListener('touchend',e=>{
+      stp(e);
       WindowSystem.container.classList.remove('scrolling');
       WindowSystem.bringToCenter();
     },eventListenerOption)
     this.addEventListener('click',e=>{
-      stopPropagationWhenListView(e);
+      console.log('window clicked')
+    },eventListenerOption)
+    this.cover.addEventListener('click',e=>{
+      stp(e);
+      console.log('window cover clicked')
       WindowSystem.currentWin = this.winIndex;
       WindowSystem.listView = false;
     },eventListenerOption)
+    
   }
   updateIndex(){
     this.winIndex = this.ws.windowList.indexOf(this);
@@ -139,7 +152,7 @@ class AppWindow extends HTMLElement {
       this.style.opacity = 1;
     }else if(this.classList.contains('away')){
       this.style.opacity = 0;
-      this.style.transform = null;
+      this.style.transform = 'translateZ(-100px)';
     }else{
       const wAngle = getDistenceFromCenter(this.winIndex, this.ws.scrollLength, this.ws.windowList.length)*Math.PI/4;
       const cosA = Math.cos(wAngle);
@@ -154,6 +167,7 @@ customElements.define('app-window',AppWindow);
 let a1 = WindowSystem.add();
 //console.log('index of the win is ', WindowSystem.windowList.indexOf(a1));
 let aa = document.createElement('div')
+aa.classList.add('testing')
 aa.onclick = ()=> alert('gyaaaabdhxjsa');
 aa.innerText = 'cfghejkdnbhs\nvgjckanbdsjwb\nhsdsjk'
 WindowSystem.add(aa);

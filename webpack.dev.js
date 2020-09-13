@@ -5,7 +5,7 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    host: '192.168.0.106',
+    host: '192.168.160.39',
     contentBase: './dist',
     headers: {
       "Access-Control-Allow-Origin": "*",

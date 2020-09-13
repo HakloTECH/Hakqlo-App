@@ -11,9 +11,18 @@ app-window {
   &.focus {
     transform: none;
     opacity: 1;
+    >.cover{
+      visibility: hidden;
+    }
   }
   &.away {
     opacity: 0;
+  }
+  > .cover{
+    position: relative;
+    z-index: 20;
+    width: 100%;
+    height: 100%;
   }
   //below is for testing
   &:nth-child(1n) {
@@ -24,6 +33,16 @@ app-window {
   }
   &:nth-child(3n) {
     background-color: red;
+  }
+  .testing {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
   }
 }
 #windowsContainer {
