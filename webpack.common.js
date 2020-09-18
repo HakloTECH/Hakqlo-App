@@ -52,7 +52,7 @@ module.exports = {
       display: "fullscreen",
       background_color: "#000000",
       theme_color: "#000000",
-      description: "Hakqlo the technology community's PWA app",
+      description: "Hakqlo's PWA app",
       icons: [
         {
           //src: path.resolve("./icon/logo.svg"),
@@ -75,7 +75,7 @@ module.exports = {
           name: "shortcut 1",
           short_name: "shortcut 1",
           description: "hello",
-          url: "./play-later?utm_source=homescreen",
+          url: "./index.html?call=shortcut&content=shortcut1",
           /*
           icons: [
             {
@@ -89,15 +89,7 @@ module.exports = {
           name: "shortcut 2",
           short_name: "shortcut 2",
           description: "what's up boy",
-          url: "./subscriptions?utm_source=homescreen",
-          /*
-          icons: [
-            {
-              src: path.resolve("/icon/logo.png"),
-              sizes: "192x192"
-            }
-          ]
-          */
+          url: "./index.html?call=shortcut&content=shortcut2",
         }
       ]
       /*

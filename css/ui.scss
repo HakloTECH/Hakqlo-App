@@ -5,7 +5,7 @@ app-window {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(255,255,255,0.7);
+  background-color: white;
   transform-origin: 50vw 0vh;
   transition-duration: 0.3s;
   &.focus {

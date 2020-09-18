@@ -11,10 +11,14 @@ window.WindowSystem = {
     //requestAnimationFrame(this.draw.bind(this));
   },
   add(element){
+    this.listView = true;
     const win = document.createElement('app-window');
     this.windowList.push(win);
     this.container.appendChild(win);
     element && win.appendChild(element);
+    this.currentWin = win.winIndex;
+    this.scrollLength = win.winIndex;
+    setTimeout(()=>{this.listView = false},300)
     return win;
   },
   draw(){
@@ -131,10 +135,13 @@ class AppWindow extends HTMLElement {
     this.cover.addEventListener('click',e=>{
       stp(e);
       //console.log('window cover clicked')
-      WindowSystem.currentWin = this.winIndex;
-      WindowSystem.listView = false;
+      this.focus();
     },eventListenerOption)
     
+  }
+  focus(){
+    WindowSystem.currentWin = this.winIndex;
+    WindowSystem.listView = false;
   }
   updateIndex(){
     this.winIndex = this.ws.windowList.indexOf(this);
@@ -162,11 +169,22 @@ class AppWindow extends HTMLElement {
   }
 }
 customElements.define('app-window',AppWindow);
+window.nativeOpen = window.open;
 window.open = function(url){
-  const iframe = document.createElement('iframe');
-  iframe.src = url;
-  WindowSystem.add(iframe)
-  return iframe.contentWindow;
+  console.log(location.origin);
+  console.log(url);
+  try{
+    
+    const iframe = document.createElement('iframe');
+    iframe.src = url;
+    const w = WindowSystem.add(iframe);
+    w.focus();
+    return iframe.contentWindow;
+  }catch(e){
+    console.log(e);
+    return nativeOpen(...arguments);
+  }
+  
 }
 let a1 = WindowSystem.add();
 //console.log('index of the win is ', WindowSystem.windowList.indexOf(a1));
@@ -175,6 +193,7 @@ aa.classList.add('testing')
 aa.onclick = ()=> alert('gyaaaabdhxjsa');
 aa.innerText = 'cfghejkdnbhs\nvgjckanbdsjwb\nhsdsjk'
 WindowSystem.add(aa);
-open('https://hakqlo.github.io')
+WindowSystem.add(aa);
+//open('https://hakqlo.github.io')
 
 //setInterval(()=>console.log(WindowSystem.scrollLength),100)

@@ -10,7 +10,6 @@
 
 #startup {
   position: fixed;
-  transform-style: preserve-3d;
   background-color: black;
   display: flex;
   z-index: 100;
@@ -24,7 +23,6 @@
   > div{
     position: relative;
     background-color: black;
-    transform: translateZ(100px);
     left: 0;
     top: 0;
     right: 0;
