@@ -7,7 +7,7 @@ app-window {
   height: 100vh;
   background-color: white;
   transform-origin: 50vw 0vh;
-  transition-duration: 0.3s;
+  transition-duration: 0.2s;
   &.focus {
     transform: none;
     opacity: 1;
