@@ -31,7 +31,7 @@ const startup = (startupScreen) =>{
     d: [
       {}
     ],
-    easing: 'easeIn',
+    easing: 'easeInOutQuint',
     duration: 2000,
     loop: false,
   })
@@ -40,7 +40,7 @@ const startup = (startupScreen) =>{
     d: [
       {}
     ],
-    easing: 'easeIn',
+    easing: 'easeInOutQuint',
     duration: 2000,
     loop: false,
   })
@@ -49,7 +49,7 @@ const startup = (startupScreen) =>{
     d: [
       {}
     ],
-    easing: 'easeIn',
+    easing: 'easeInOutQuint',
     duration: 2000,
     loop: false,
   })

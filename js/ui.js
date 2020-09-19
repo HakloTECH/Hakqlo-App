@@ -1,4 +1,5 @@
 import platform from 'mini-platform-detect';
+import anime from 'animejs/lib/anime.es.js';
 window.WindowSystem = {
   windowList: [], // contains all windows
   currentWin: 0, // index num of the current window in windowList
@@ -11,15 +12,32 @@ window.WindowSystem = {
     //requestAnimationFrame(this.draw.bind(this));
   },
   add(element){
-    this.listView = true;
     const win = document.createElement('app-window');
     this.windowList.push(win);
     this.container.appendChild(win);
     element && win.appendChild(element);
-    this.currentWin = win.winIndex;
-    this.scrollLength = win.winIndex;
-    setTimeout(()=>{this.listView = false},300)
+    this.moveTo(win.winIndex);
     return win;
+  },
+  moveTo(index){
+    if(index>=this.windowList.length)return 0;
+    const dur = 300;
+    this.listView = true;
+    this.currentWin = index;
+    setTimeout(()=>{
+      
+      WindowSystem.container.classList.add('scrolling');
+      anime({
+        targets: this,
+        scrollLength: index,
+        duration: dur,
+        easing: 'easeInOutQuint',
+      })
+      setTimeout(()=>{
+        this.listView = false;
+        WindowSystem.container.classList.remove('scrolling');
+      },dur)
+    }, 200)
   },
   draw(){
     //this.windowList.forEach(v=>v.draw());
@@ -170,6 +188,7 @@ class AppWindow extends HTMLElement {
 }
 customElements.define('app-window',AppWindow);
 window.nativeOpen = window.open;
+/*
 window.open = function(url){
   console.log(location.origin);
   console.log(url);
@@ -178,14 +197,14 @@ window.open = function(url){
     const iframe = document.createElement('iframe');
     iframe.src = url;
     const w = WindowSystem.add(iframe);
-    w.focus();
+    w.focus(); 
     return iframe.contentWindow;
   }catch(e){
     console.log(e);
     return nativeOpen(...arguments);
   }
   
-}
+}*/
 let a1 = WindowSystem.add();
 //console.log('index of the win is ', WindowSystem.windowList.indexOf(a1));
 let aa = document.createElement('div')
@@ -193,7 +212,7 @@ aa.classList.add('testing')
 aa.onclick = ()=> alert('gyaaaabdhxjsa');
 aa.innerText = 'cfghejkdnbhs\nvgjckanbdsjwb\nhsdsjk'
 WindowSystem.add(aa);
-WindowSystem.add(aa);
+WindowSystem.add();
 //open('https://hakqlo.github.io')
 
 //setInterval(()=>console.log(WindowSystem.scrollLength),100)

@@ -13,10 +13,11 @@ global.isPWA = isInStandaloneMode();
  * same as util.format in nodejs
  */
 function format(fmt) {
-  var re = /(%?)(%([jds]))/g
-    , args = Array.prototype.slice.call(arguments, 1);
+  var re = /(%?)(%([jds]))/g,
+  args = Array.prototype.slice.call(arguments, 1),
+  fmt = fmt.toString();
   if(args.length) {
-    fmt = fmt.toString().replace(re, function(match, escaped, ptn, flag) {
+    fmt = fmt.replace(re, function(match, escaped, ptn, flag) {
       var arg = args.shift();
       switch(flag) {
         case 's':
