@@ -60,10 +60,12 @@ app-window {
   z-index: 9;
   transition: 0.5s;
   visibility: visible;
+  opacity: 1;
   &.away {
-    transform: translateY(-100vh) scale(2,2);
-    perspective: 50px;
+    transform: translateY(-100vh); //scale(2,2);
+    //perspective: 50px;
     visibility: hidden;
+    opacity: 0;
   }
   &.scrolling > app-window{
     transition-duration: 0s;
