@@ -7,5 +7,6 @@ import '../css/main.scss';
 import '../css/startupApp.scss';
 import { setPageLang } from './lang';
 import './ui';
+import './verifyCall';
 installProcess(window);
 //console.log(platform);
