@@ -87,7 +87,7 @@ window.WindowSystem = {
     return this._listView;
   }
 }
-//window.WindowSystem.away = true;
+window.WindowSystem.away = true;
 const getDistenceFromCenter = (index, center, listLength) =>{
   const b_distance = index - center;
   if(Math.abs(b_distance)>Math.abs(b_distance+listLength)) return b_distance+listLength;
