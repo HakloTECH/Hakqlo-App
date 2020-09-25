@@ -1,13 +1,12 @@
-#startup {
+header > svg#logo_anime {
+  width:100vw;
+  height: 100vh;
+  margin: 0;
   position: fixed;
-  background-color: transparent;
-  display: flex;
-  z-index: 100;
-  justify-content: center;
-  align-items: center;
-  top: 0px;
+  top:0px;
   left: 0px;
+}
+body{
   width: 100vw;
   height: 100vh;
-  transition: opacity 1s ease 2s;
 }
