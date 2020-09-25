@@ -21,113 +21,16 @@
   width: 100vw;
   height: 100vh;
   transition: opacity 1s ease 2s;
-  > div{
-    position: relative;
-    background-color: black;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    width: 100vw;
+  svg#logo_anime {
+    width:100vw;
     height: 100vh;
+    margin: 0;
+    position: fixed;
+    top:0px;
+    left: 0px;
   }
-}
-
-#startup .centerTriangle {
-  position: relative;
-  left: 0;
-  top: calc(50vh - 44px);
-  //bottom: 50vh;
-  right: 0;
-  margin: auto;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 20px 34.641px;
-  border-color: transparent transparent transparent transparent;
-  animation: disappear1 1s step-end 0.5s 1 forwards;
 }
 
 #startup.clear {
   opacity: 0;
-}
-
-#startup .container {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  width: 100vw;
-  height: calc(17.3205px * 3);
-  padding: 0 0;
-  transform-origin: 50% 5.5px;
-}
-
-#startup .container>.trapezoid {
-  position: relative;
-  width: 0%;
-  height: 0;
-  left: calc(0% - var(--startup-animation-logo-max-length));
-  top: 0px;
-  border-style: solid;
-  margin: 0 0;
-  border-top: 0px;
-  border-bottom: 17.3205px solid var(--startup-animation-logo-color);
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  animation: extend2 1s ease 0.5s 1 forwards;
-}
-
-#startup .container>.parallelogram {
-  position: relative;
-  transform: skewX(-30deg);
-  width: 0%;
-  left: calc(60% + var(--startup-animation-logo-max-length));
-  height: 17.3205px;
-  margin: 0.5 5;
-  top: 17.3205px;
-  background-color: var(--startup-animation-logo-color);
-  animation: extend1 1s ease 0.5s 1 forwards;
-}
-
-@keyframes disappear1 {
-  70%,
-  100% {
-    border-color: transparent transparent var(--startup-animation-logo-color) transparent;
-  }
-}
-
-@keyframes extend1 {
-  0% {}
-  30% {
-    width: var(--startup-animation-logo-max-length);
-  }
-  100% {
-    width: calc(20px + 20px);
-    left: 50%;
-  }
-}
-
-@keyframes extend2 {
-  0% {}
-  30% {
-    width: calc(var(--startup-animation-logo-max-length)*0.5);
-  }
-  100% {
-    width: 20px;
-    left: calc(50% + 20px);
-  }
-}
-
-#startup .fst {}
-
-#startup .snd {
-  transform: rotate(120deg);
-}
-
-#startup .trd {
-  transform: rotate(-120deg);
 }
