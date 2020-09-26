@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     delay: dur,
     duration: 800,
   })
-  /*
+  
   setTimeout(()=>{
     startupscreen.style.transition = fadeoutTime/1000 + 's';
     startupscreen.style.opacity = 0;
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       startupscreen.remove();
       WindowSystem.listView = false
     },fadeoutTime)
-  },1800);*/
+  },1800);
 })
 /*
 const myHeaders = new Headers();
