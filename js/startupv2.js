@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       {value: '#dc00ff'}, 
     ],
     easing: 'easeInCubic',
-    delay: dur-300,
+    delay: dur-700,
     duration: 1500,
   })
   l = document.querySelector('svg#logo_anime #logo_grad')
@@ -79,11 +79,12 @@ document.addEventListener('DOMContentLoaded',()=>{
     filter: [
       {value: 'drop-shadow(0px 0px 0px #8fd0ff)'},
       {value: 'drop-shadow(0px 0px 15px #8fd0ff)'},
+      {value: 'drop-shadow(0px 0px 5px #8fd0ff)'},
       {value: 'drop-shadow(0px 0px 0px #8fd0ff)'}
     ],
     easing: 'easeInOutCubic',
-    delay: dur+300,
-    duration: 1000,
+    delay: dur,
+    duration: 800,
   })
   /*
   setTimeout(()=>{
