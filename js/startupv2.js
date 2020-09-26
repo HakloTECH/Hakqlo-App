@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       startupscreen.remove();
       WindowSystem.listView = false
     },fadeoutTime)
-  },2500);
+  },3000);
 })
 /*
 const myHeaders = new Headers();
