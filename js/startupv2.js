@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       {value: '#dc00ff'}, 
     ],
     easing: 'easeInCubic',
-    delay: dur-700,
+    delay: dur-950,
     duration: 1500,
   })
   l = document.querySelector('svg#logo_anime #logo_grad')
