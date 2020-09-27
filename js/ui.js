@@ -207,13 +207,14 @@ window.open = function(url){
   
 }*/
 let a1 = WindowSystem.add();
+WindowSystem.add();
 //console.log('index of the win is ', WindowSystem.windowList.indexOf(a1));
 let aa = document.createElement('div')
 aa.classList.add('testing')
-aa.onclick = ()=> alert('gyaaaabdhxjsa');
+aa.onclick = ()=> WindowSystem.listView=1;
 aa.innerText = 'cfghejkdnbhs\nvgjckanbdsjwb\nhsdsjk'
 WindowSystem.add(aa);
-WindowSystem.add();
+
 //open('https://hakqlo.github.io')
 
 //setInterval(()=>console.log(WindowSystem.scrollLength),100)

@@ -71,6 +71,7 @@ window.runExternal = (
  * @returns {Promise.<string>} 
  */
 window.popup = (title='', contents=[], buttons = { "OK": "ok" }) => {
+  if(typeof contents === 'string')contents = [contents];
   const previousDialogs = document.querySelectorAll("dialog");
   const thePreviousOneDialog = previousDialogs[previousDialogs.length - 1]
   previousDialogs.forEach(v => {
