@@ -57,7 +57,7 @@ module.exports = {
         {
           //src: path.resolve("./icon/logo.svg"),
           src: path.resolve("./icon/logo008b.svg"),
-          sizes: [200],
+          sizes: [256],
           type: "image/svg+xml"
         },
         {
