@@ -44,14 +44,14 @@ const drawMain = () =>{
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.closePath();
 }
-const maxParticleRad = Math.min(canvas.width,canvas.height)*0.08;
+const maxParticleRad = 4;
 class BackAnimatingParticle{
   constructor(){
     this.x = Math.random()*canvas.width;
     this.y = canvas.height + Math.random()*canvas.height;
     this.radius = Math.random()*maxParticleRad+1;
-    this.color = `rgba(255, 255, 255, ${(1-this.radius/maxParticleRad)**2})`;
-    const v = this.radius*0.3;
+    this.color = `rgba(255, 255, 255, ${(1-this.radius/maxParticleRad)**1.6})`;
+    const v = this.radius*0.4;
     this.xVel = v*Math.random()*0.5;
     this.yVel = v*Math.random()*0.5+0.5;
   }
@@ -82,7 +82,7 @@ const animateAllParticles = ()=>{
   requestAnimationFrame(animateAllParticles);
 }
 
-for(let i=0;i<30;i++){
+for(let i=0;i<80;i++){
   particleList.push(new BackAnimatingParticle());
 }
 window.onappinstalled=()=>location.href="./index.html";
