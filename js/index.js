@@ -4,7 +4,6 @@ import installProcess from './install';
 import './back_terminal'
 import './startupv2';
 import '../css/main.scss';
-import '../css/startupApp.scss';
 import { setPageLang } from './lang';
 import './ui';
 import './verifyCall';
