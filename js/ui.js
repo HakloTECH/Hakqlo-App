@@ -9,7 +9,7 @@ window.WindowSystem = {
   _listView: true,
   init(){
     //this.away = true;
-    requestAnimationFrame(this.draw.bind(this));
+    //requestAnimationFrame(this.draw.bind(this));
   },
   add(element){
     const win = document.createElement('app-window');
@@ -41,8 +41,8 @@ window.WindowSystem = {
   },
   draw(){
     //this.windowList.forEach(v=>v.draw());
-    for(const i in this.windowList)this.windowList[i].draw();
-    requestAnimationFrame(this.draw.bind(this))
+    //for(const i in this.windowList)this.windowList[i].draw();
+    //requestAnimationFrame(this.draw.bind(this))
   },
   scrollTo(l){
     // 0 <= v < this.windowList.length
@@ -94,7 +94,6 @@ window.WindowSystem = {
     return this._listView;
   }
 }
-WindowSystem.init();
 
 WindowSystem.away = true;
 const getDistenceFromCenter = (index, center, listLength) =>{
@@ -128,7 +127,7 @@ class AppWindow extends HTMLElement {
     this.appendChild(this.cover);
     this.cover.setAttribute('class','cover')
     //this.cover.className.add('cover');
-    //requestAnimationFrame(this.draw.bind(this));
+    requestAnimationFrame(this.draw.bind(this));
     const eventListenerOption = {
       //capture: false,
       //passive: false
@@ -136,7 +135,7 @@ class AppWindow extends HTMLElement {
     const stp = (e) =>{
       if(this.ws.listView){
         e.stopPropagation();
-        //e.preventDefault();
+        e.preventDefault();
       }
     }
     this.cover.addEventListener('touchstart',e=>{
@@ -192,7 +191,7 @@ class AppWindow extends HTMLElement {
       this.style.transform = `scale(${WSR}, ${WSR}) translateZ(${(cosA)*70}px) translateX(${Math.sin(wAngle)*WXR}%)`
       this.style.opacity = cosA**1.5;
     }
-    //requestAnimationFrame(this.draw.bind(this));
+    requestAnimationFrame(this.draw.bind(this));
   }
   onfocused(){
 
