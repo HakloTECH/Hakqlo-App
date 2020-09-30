@@ -57,8 +57,13 @@ window.WindowSystem = {
     return this._away;
   },
   set away(state){
-    if(state)this.container.classList.add('away');
-    else this.container.classList.remove('away');
+    if(state){
+      this.container.classList.add('away');
+      if(!this.listView)this.windowList[this.currentWin].onblur();
+    }else{
+      this.container.classList.remove('away');
+      if(!this.listView)this.windowList[this.currentWin].focus();
+    } 
     this._away = state;
   },
   set listView(state){
@@ -67,7 +72,8 @@ window.WindowSystem = {
       this.scrollLength = this.currentWin;
       for(const wIndex in this.windowList){
         if(wIndex == this.currentWin){
-          this.windowList[wIndex].classList.remove('focus')
+          this.windowList[wIndex].classList.remove('focus');
+          this.windowList[wIndex].onblur();
         }else{
           this.windowList[wIndex].classList.remove('away');
         }
@@ -76,6 +82,7 @@ window.WindowSystem = {
       for(const wIndex in this.windowList){
         if(wIndex == this.currentWin){
           this.windowList[wIndex].classList.add('focus')
+          this.windowList[wIndex].onfocused();
         }else{
           this.windowList[wIndex].classList.add('away');
         }
@@ -186,26 +193,16 @@ class AppWindow extends HTMLElement {
     }
     requestAnimationFrame(this.draw.bind(this));
   }
+  onfocused(){
+
+  }
+  onblur(){
+
+  }
 }
 customElements.define('app-window',AppWindow);
-window.nativeOpen = window.open;
-/*
-window.open = function(url){
-  console.log(location.origin);
-  console.log(url);
-  try{
-    
-    const iframe = document.createElement('iframe');
-    iframe.src = url;
-    const w = WindowSystem.add(iframe);
-    w.focus(); 
-    return iframe.contentWindow;
-  }catch(e){
-    console.log(e);
-    return nativeOpen(...arguments);
-  }
-  
-}*/
+//window.nativeOpen = window.open;
+
 let a1 = WindowSystem.add();
 WindowSystem.add();
 //console.log('index of the win is ', WindowSystem.windowList.indexOf(a1));

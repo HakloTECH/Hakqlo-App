@@ -80,7 +80,7 @@ module.exports = {
           icons: [
             {
               src: path.resolve("/icon/logo.png"),
-              sizes: "192x192"
+              sizes: "96x96"
             }
           ]
           */
