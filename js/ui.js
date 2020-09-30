@@ -47,12 +47,12 @@ window.WindowSystem = {
   scrollTo(l){
     // 0 <= v < this.windowList.length
     //Math.sign(l)
-    const v = l%this.windowList.length;
+    const v = l%(this.windowList.length-1);
     this.scrollLength = v;
   },
   bringToCenter(){
     this.scrollLength = Math.round(this.scrollLength);
-    if(this.scrollLength===this.windowList.length||this.scrollLength===-this.windowList.length)this.scrollLength=0;
+    //if(this.scrollLength===this.windowList.length||this.scrollLength===-this.windowList.length)this.scrollLength=0;
   },
   get away(){
     return this._away;
@@ -136,7 +136,7 @@ class AppWindow extends HTMLElement {
     const stp = (e) =>{
       if(this.ws.listView){
         e.stopPropagation();
-        e.preventDefault();
+        //e.preventDefault();
       }
     }
     this.cover.addEventListener('touchstart',e=>{
@@ -147,6 +147,7 @@ class AppWindow extends HTMLElement {
     },eventListenerOption)
     this.cover.addEventListener('touchmove',e=>{
       stp(e);
+      e.preventDefault();
       const moveLength = scrollXStart-e.changedTouches[0].screenX*scrollRatio+WLScrollXstart;
       if(WindowSystem.windowList.length===1 && (moveLength > 0.4 || moveLength < -0.4))return 0;
       WindowSystem.scrollTo(moveLength);
