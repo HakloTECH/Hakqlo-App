@@ -52,7 +52,7 @@ window.WindowSystem = {
   },
   bringToCenter(){
     this.scrollLength = Math.round(this.scrollLength);
-    if(this.scrollLength===this.windowList.length)this.scrollLength=0;
+    if(this.scrollLength===this.windowList.length||this.scrollLength===-this.windowList.length)this.scrollLength=0;
   },
   get away(){
     return this._away;
