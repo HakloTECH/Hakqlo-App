@@ -1,3 +1,4 @@
+@import './gestureHandler.scss';
 app-window {
   position: absolute;
   //top: 0;
@@ -8,6 +9,7 @@ app-window {
   background-color: white;
   transform-origin: 50vw 0vh;
   transition-duration: 0.2s;
+  z-index: 7;
   &.focus {
     transform: none;
     opacity: 1;
@@ -53,25 +55,40 @@ app-window {
   }
 }
 #windowsContainer {
+  position: absolute;
   perspective: 300px;
-  perspective-origin: 50vw -100vh;
-  position: fixed;
+  //perspective-origin: 50vw -100vh;
+  perspective-origin: 50vw 0;
+  width: 100vw;
+  height: 100vh;
   transform-style: preserve-3d;
-  z-index: 9;
+  z-index: 6;
   transition: 0.5s;
   visibility: visible;
   opacity: 1;
   &.away {
-    transform: translateY(-100vh); //scale(2,2);
-    //perspective: 50px;
+    transform: translateY(-100vh);
+    //perspective-origin: 50vw -50vh;
     visibility: hidden;
     opacity: 0;
   }
   &.scrolling > app-window{
     transition-duration: 0s;
   }
+}/*
+#goBaseSpace {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  visibility: visible;
+  z-index: 5;
+  &.hidden{
+    visibility: hidden;
+  }
 }
-/*
+
+
 .safari #windowsContainer{
   transform-style: unset;
 }
