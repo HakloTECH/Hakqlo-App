@@ -88,10 +88,12 @@ for(let i=0;i<80;i++){
 window.onappinstalled=()=>location.href="./index.html";
 //console.log(require('../icon/ios-safari-share-icon.svg'));
 //console.log('test');
+requestAnimationFrame(animateAllParticles);
 const animateStart = () =>{
+  if(animateStarted)return 0;
   document.body.classList.add('install_pressed');
   animateStarted=true;
-  requestAnimationFrame(animateAllParticles);
+  
   anime({
     targets: backGradVectorYPos,
     duration: 1500,
@@ -147,7 +149,12 @@ let installApp = () =>{
             console.log(r);
             if(r.outcome==='accepted')animateStart();
             else installButton.remove();
+          });
+          popup('havig a problem?','',{'OK':'ok', 'getting a problem?': 'problem'})
+          .then(v=>{
+            if(v==='problem')popup('Try the following:', ['If you are using In-App browser, try opening the site with browser app.','chrome is recommended browser.'])
           })
+          .catch(e => console.warn(e))
         })
       })
     } else if (ios&&safari) {
