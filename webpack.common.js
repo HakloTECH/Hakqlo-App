@@ -44,7 +44,7 @@ module.exports = {
       
     }),
     new WebpackPwaManifest({
-      filename: "manifest-[hash].webmanifest",
+      filename: "manifest.webmanifest",
       orientation: 'omit',
       short_name: "Hakqlo",
       name: "Hakqlo App",
@@ -53,6 +53,7 @@ module.exports = {
       background_color: "#000000",
       theme_color: "#000000",
       description: "Hakqlo's PWA app",
+      categories: ["tech", "coding", "community"],
       icons: [
         {
           //src: path.resolve("./icon/logo.svg"),
@@ -63,7 +64,7 @@ module.exports = {
         {
           //src: path.resolve("./icon/logo.svg"),
           src: path.resolve("./icon/logo008b.png"),
-          sizes: [192,512],
+          sizes: [144,192,384,512],
           type: "image/png"
         },
       ],

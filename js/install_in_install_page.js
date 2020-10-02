@@ -1,5 +1,5 @@
 import "./baseFunctions";
-import platform from 'mini-platform-detect';
+import { mouse, ios, safari } from 'platform-detect'
 import runtime from 'serviceworker-webpack-plugin/lib/runtime';
 import anime from 'animejs/lib/anime.es.js';
 //import '../node_modules/dialog-polyfill/dist/dialog-polyfill.css';
@@ -88,8 +88,38 @@ for(let i=0;i<80;i++){
 window.onappinstalled=()=>location.href="./index.html";
 //console.log(require('../icon/ios-safari-share-icon.svg'));
 //console.log('test');
+const animateStart = () =>{
+  document.body.classList.add('install_pressed');
+  animateStarted=true;
+  requestAnimationFrame(animateAllParticles);
+  anime({
+    targets: backGradVectorYPos,
+    duration: 1500,
+    //round: 1,
+    vStart: [0,-canvas.height*2],
+    vEnd: [canvas.height*3,canvas.height],
+    easing: 'easeInOutSine',
+  })
+}
+const installButton = document.querySelector("#install_button");
+const pwaNotSupported = () =>{
+  installButton.remove();
+  popup('browser not supported',[
+    'sorry, your browser does not support PWA',
+    'Here is a tip:',
+    'use Safari on IOS device',
+    'If you are using Android, Chrome is recommended browser.',
+    'make sure that you are using newer version of OS.'
+  ],{'OK':'ok','go to home':'goHome'}).then(r=>{
+    r==='goHome'&& (location.href = 'https://hakqlo.github.io/dist/');
+  })
+}
 let installApp = () =>{
-  if ('serviceWorker' in navigator) {
+  if(mouse){
+    popup('PC version unavailable','Sorry, we are still in development on the PC version')
+    installButton.remove();
+  }else if ('serviceWorker' in navigator) {
+    console.log('sw supported');
     //navigator.serviceWorker.register('./sw.js')
     runtime.register().then(function() {
       console.log('succeeded');
@@ -99,39 +129,32 @@ let installApp = () =>{
       console.log('error:', err);
     });
     //make an install button (or installPWA function for terminal maybe?)
-    const installButton = document.querySelector("#install_button");
+    
     //installButton.innerText = "install";
     //document.body.appendChild(installButton);
     //showInstallPrompt is a function 
-    installButton.addEventListener('click', () => {
-      document.body.classList.add('install_pressed');
-      if(!animateStarted){
-        animateStarted=true;
-        requestAnimationFrame(animateAllParticles);
-        anime({
-          targets: backGradVectorYPos,
-          duration: 1500,
-          //round: 1,
-          vStart: [0,-canvas.height*2],
-          vEnd: [canvas.height*3,canvas.height],
-          easing: 'easeInOutSine',
-        })
-      }
+    /*installButton.addEventListener('click', () => {
       
-    });
+      animateStarted || animateStart();
+      
+    });*/
     if ("onbeforeinstallprompt" in window) {
       window.addEventListener("beforeinstallprompt", e => {
         e.preventDefault();
         installButton.addEventListener('click', () => {
-          if (!e.prompt) {
-            popup("didn't you already install the App?", []);
-          }
           e.prompt().then(r=>console.log(r));
+          e.userChoice.then(r=>{
+            console.log(r);
+            if(r.outcome==='accepted')animateStart();
+            else installButton.remove();
+          })
         })
       })
-    } else if (platform.ios && platform.safari) {
+    } else if (ios&&safari) {
       //show a prompt exaplaining how to install(in IOS safari)
+      console.log('ios safari');
       installButton.addEventListener('click', () => {
+        animateStart();
         popup("Install", [
           "You can install Hakqlo App by adding this website to your home screen.",
           createElementFromHTML(`
@@ -145,7 +168,11 @@ let installApp = () =>{
             mask: url(${require('../icon/ios-safari-add-to-home-icon.svg').default}) no-repeat center;width: 28px;
             height: 28px;'></div> 'Add to Home Screen'.</li></ol>
           `)
-        ]).catch(e => console.warn(e))
+        ],{'OK':'ok', 'getting a problem?': 'problem'})
+        .then(v=>{
+          if(v==='problem')popup('Try the following:', 'If you are not using Safari, try to use safari.')
+        })
+        .catch(e => console.warn(e))
       })
       /*
 
@@ -164,8 +191,11 @@ let installApp = () =>{
       */
 
     }else{
-      popup('browser not supported',['sorry, your browser does not support PWA'])
+      pwaNotSupported();
     }
-  }else popup('browser not supported',['sorry, your browser does not support PWA'])
+  }else{
+    console.log('sw supported');
+    pwaNotSupported();
+  } 
 }
 installApp();

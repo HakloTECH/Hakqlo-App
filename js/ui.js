@@ -1,4 +1,4 @@
-import platform from 'mini-platform-detect';
+
 import anime from 'animejs/lib/anime.es.js';
 import { WindowSystem } from './windowSystem';
 //window.WindowSystem will be commented out when it becomes product

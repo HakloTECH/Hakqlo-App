@@ -1,4 +1,4 @@
-import platform from 'mini-platform-detect';
+
 import "./baseFunctions";
 import installProcess from './install';
 import './back_terminal'
@@ -9,4 +9,3 @@ import './ui';
 import './gestureHandler';
 import './verifyCall';
 installProcess(window);
-//console.log(platform);
