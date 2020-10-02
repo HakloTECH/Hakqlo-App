@@ -135,9 +135,9 @@ module.exports = {
           },
           {
             loader: "sass-loader",
-            options: {
+            /*options: {
               sourceMap: true
-            }
+            }*/
           }
         ]
       },
