@@ -48,7 +48,7 @@ const maxParticleRad = 4;
 class BackAnimatingParticle{
   constructor(){
     this.x = Math.random()*canvas.width;
-    this.y = canvas.height + Math.random()*canvas.height;
+    this.y = Math.random()*canvas.height;
     this.radius = Math.random()*maxParticleRad+1;
     this.color = `rgba(255, 255, 255, ${(1-this.radius/maxParticleRad)**1.6})`;
     const v = this.radius*0.4;
@@ -144,17 +144,17 @@ let installApp = () =>{
       window.addEventListener("beforeinstallprompt", e => {
         e.preventDefault();
         installButton.addEventListener('click', () => {
+          popup('havig a problem?','',{'OK':'ok', 'look for solution': 'problem'})
+          .then(v=>{
+            if(v==='problem')popup('Try the following:', ['If you are using In-App browser, try opening the site with browser app.','chrome is recommended browser.'])
+          }).catch(e => console.warn(e))
           e.prompt().then(r=>console.log(r));
           e.userChoice.then(r=>{
             console.log(r);
             if(r.outcome==='accepted')animateStart();
             else installButton.remove();
           });
-          popup('havig a problem?','',{'OK':'ok', 'getting a problem?': 'problem'})
-          .then(v=>{
-            if(v==='problem')popup('Try the following:', ['If you are using In-App browser, try opening the site with browser app.','chrome is recommended browser.'])
-          })
-          .catch(e => console.warn(e))
+          
         })
       })
     } else if (ios&&safari) {
