@@ -8,8 +8,7 @@ const WebpackPwaManifest = require('webpack-pwa-manifest')
 const webpack = require('webpack')
 module.exports = {
   entry: {
-    app: './js/index.js',
-    install: './js/install_in_install_page.js',
+    app: './src/index.jsx',
   },
   output: {
     filename: '[name].[hash].js',
@@ -20,18 +19,12 @@ module.exports = {
     new CaseSensitivePathsPlugin(),
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     new HtmlWebpackPlugin({
-      template: './index.html',
-      excludeChunks: ['install'],
+      template: './template/index.html',
     }),
-    new HtmlWebpackPlugin({
-      template: './install.html',
-      filename: 'install.html',
-      chunks: ['install'],
-      
-    }),
+    
     //new webpack.HotModuleReplacementPlugin(),
     new webpack.ExtendedAPIPlugin(),
-    new ServiceWorkerWebpackPlugin({
+    /*new ServiceWorkerWebpackPlugin({
       entry: path.resolve('./sw.js'),
       publicPath: './',
       excludes: [
@@ -42,7 +35,7 @@ module.exports = {
         'icon/install.svg',
       ],
       
-    }),
+    }),*/
     new WebpackPwaManifest({
       filename: "manifest.webmanifest",
       orientation: 'omit',
@@ -64,7 +57,7 @@ module.exports = {
         {
           //src: path.resolve("./icon/logo.svg"),
           src: path.resolve("./icon/logo008b.png"),
-          sizes: [144,192,384,512],
+          sizes: [96,192,512],
           type: "image/png"
         },
       ],
@@ -77,38 +70,35 @@ module.exports = {
           short_name: "shortcut 1",
           description: "hello",
           url: "./index.html?call=shortcut&content=shortcut1",
-          /*
           icons: [
-            {
-              src: path.resolve("/icon/logo.png"),
+            { 
+              src: "./icon/icon_96.png",
               sizes: "96x96"
             }
           ]
-          */
         },
         {
           name: "shortcut 2",
           short_name: "shortcut 2",
           description: "what's up boy",
           url: "./index.html?call=shortcut&content=shortcut2",
+          icons: [
+            { 
+              src: "./icon/icon_96.png",
+              sizes: "96x96"
+            }
+          ]
         }
       ]
-      /*
-      ios: {
-        'apple-touch-icon': './src/imgs/ios-safari-add-to-home-icon.svg',
-        'apple-mobile-web-app-status-bar-style': 'black-translucent',
-        /*'mask-icon': {
-          href:'./src/imgs/ios-safari-add-to-home-icon.svg',
-          color: 'black',
-        }
-      }*/
     }),
   ],
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.m?jsx?$/,
         exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        /*
         use: {
           loader: 'babel-loader',
           options: {
@@ -119,7 +109,7 @@ module.exports = {
               //"@babel/plugin-proposal-nullish-coalescing-operator",
             ]
           }
-        }
+        }*/
       },
       {
         test: /\.css$/,
