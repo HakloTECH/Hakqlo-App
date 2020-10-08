@@ -2,7 +2,7 @@ import React from 'react'
 import Splash from './Splash'
 import WindowList from './WindowList'
 import Install from './Install'
-
+import DialogList from './DialogList'
 class App extends React.Component {
   state = {
     isPWA: window.matchMedia('(display-mode: standalone)').matches
@@ -17,17 +17,19 @@ class App extends React.Component {
   }
 
   render() {
-    if (true||this.state.isPWA) {
+    if (this.state.isPWA) {
       return (
         <div className='App'>
           <Splash />
           <WindowList />
+          <DialogList />
         </div>
       )
     } else {
       return (
         <div className='App'>
           <Install />
+          <DialogList />
         </div>
       )
     }

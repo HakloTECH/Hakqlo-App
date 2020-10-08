@@ -64,24 +64,25 @@ module.exports = {
           short_name: "shortcut 1",
           description: "hello",
           url: "./index.html?call=shortcut&content=shortcut1",
+          /*
           icons: [
             { 
               src: "./icon/icon_96.png",
               sizes: "96x96"
             }
-          ]
+          ]*/
         },
         {
           name: "shortcut 2",
           short_name: "shortcut 2",
           description: "what's up boy",
           url: "./index.html?call=shortcut&content=shortcut2",
-          icons: [
+          /*icons: [
             { 
               src: "./icon/icon_96.png",
               sizes: "96x96"
             }
-          ]
+          ]*/
         }
       ]
     }),

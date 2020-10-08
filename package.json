@@ -21,6 +21,7 @@
     "platform-detect": "^3.0.1",
     "react": "^16.13.1",
     "react-app-rewired": "^2.1.6",
+    "react-dialog-polyfill": "^1.0.3",
     "react-dom": "^16.13.1",
     "xterm": "^4.9.0",
     "xterm-addon-fit": "^0.4.0"
