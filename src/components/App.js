@@ -17,7 +17,7 @@ class App extends React.Component {
   }
 
   render() {
-    if (this.state.isPWA) {
+    if (true||this.state.isPWA) {
       return (
         <div className='App'>
           <Splash />

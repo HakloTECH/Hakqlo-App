@@ -1,10 +1,12 @@
 const path = require('path');
-const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
+//const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const WebpackPwaManifest = require('webpack-pwa-manifest')
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
+
 const webpack = require('webpack')
 module.exports = {
   entry: {
@@ -21,21 +23,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './template/index.html',
     }),
-    
+    new WorkboxWebpackPlugin.InjectManifest({
+      swSrc: './src/sw.js',
+      swDest: 'service-worker.js',
+      maximumFileSizeToCacheInBytes: 1024 * 1024 * 5,
+    }),
     //new webpack.HotModuleReplacementPlugin(),
     new webpack.ExtendedAPIPlugin(),
-    /*new ServiceWorkerWebpackPlugin({
-      entry: path.resolve('./sw.js'),
-      publicPath: './',
-      excludes: [
-        'install.html', 
-        'js/install_in_install_page.js', 
-        'icon/ios-safari-add-to-home-icon.svg', 
-        'icon/ios-safari-share-icon.svg',
-        'icon/install.svg',
-      ],
-      
-    }),*/
     new WebpackPwaManifest({
       filename: "manifest.webmanifest",
       orientation: 'omit',

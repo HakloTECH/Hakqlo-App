@@ -13,14 +13,14 @@ export default class extends React.Component {
 
     listCover.addEventListener('touchstart', e => {
       this.setState({
-        scrollXStart: e.changedTouches[0].pageX*1.5/window.screen.width,
+        scrollXStart: e.changedTouches[0].screenX*3.3333/window.screen.width,
         WLScrollXStart: winList.state.scrollLength
       })
       winList.setState({scrolling: true})
     }, {passive: false})
     listCover.addEventListener('touchmove', e => {
       e.preventDefault()
-      const moveLength = this.state.scrollXStart-e.changedTouches[0].pageX*1.5/window.screen.width+this.state.WLScrollXStart
+      const moveLength = this.state.scrollXStart-e.changedTouches[0].screenX*3.3333/window.screen.width+this.state.WLScrollXStart
       if (winList.appWindows.length === 1 && (moveLength > 0.4 || moveLength < -0.4)) return 0
       winList.scrollTo(moveLength)
     }, {passive: false})
@@ -48,9 +48,9 @@ export default class extends React.Component {
     const isListView = winList.state.listView
     const isFocused = winList.state.currentWin === this.props.index
     const distanceFromCenter = this.getDistanceFromCenter(this.props.index, winList.state.scrollLength, winList.appWindows.length)
-    let wAngle = distanceFromCenter*Math.PI*3/4
+    let wAngle = distanceFromCenter*Math.PI/4
     if (Math.abs(wAngle)>Math.PI) wAngle = Math.PI
-    
+    const cosA = Math.cos(wAngle);
     return (
       <div
         className={
@@ -59,8 +59,8 @@ export default class extends React.Component {
         }
         style={
           isListView ? {
-            transform: `scale(0.6, 0.6) translateZ(${Math.cos(wAngle)*15+60}px) translateX(${Math.sin(wAngle) * 50}%)`,
-            opacity: Math.cos(wAngle) > -1/2**0.5 ? (Math.cos(wAngle)+1/2**0.5)/(2+2/2**0.5)+0.5 : (Math.cos(wAngle)+1/2**0.5)/(3**0.5-2/2**0.5)+0.5
+            transform: `scale(0.6, 0.6) translateZ(${cosA*70}px) translateX(${Math.sin(wAngle)*50}%)`,
+            opacity: cosA**1.5||0
           } : null
         }>
         <div
