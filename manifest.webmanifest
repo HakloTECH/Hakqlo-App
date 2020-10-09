@@ -23,7 +23,7 @@
   ],
   "name": "Hakqlo App",
   "short_name": "Hakqlo",
-  "display": "fullscreen",
+  "display": "standalone",
   "start_url": "./index.html",
   "background_color": "#000000",
   "theme_color": "#000000",
