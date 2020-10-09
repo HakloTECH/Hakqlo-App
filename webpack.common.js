@@ -5,7 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
-const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 
 const webpack = require('webpack')
 module.exports = {
@@ -23,11 +22,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './template/index.html',
     }),
-    new WorkboxWebpackPlugin.InjectManifest({
-      swSrc: './src/sw.js',
-      swDest: 'service-worker.js',
-      maximumFileSizeToCacheInBytes: 1024 * 1024 * 5,
-    }),
     //new webpack.HotModuleReplacementPlugin(),
     new webpack.ExtendedAPIPlugin(),
     new WebpackPwaManifest({
@@ -36,7 +30,7 @@ module.exports = {
       short_name: "Hakqlo",
       name: "Hakqlo App",
       start_url: "./index.html",
-      display: "fullscreen",
+      display: "standalone",
       background_color: "#000000",
       theme_color: "#000000",
       description: "Hakqlo's PWA app",

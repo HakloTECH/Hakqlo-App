@@ -3,6 +3,7 @@ import Splash from './Splash'
 import WindowList from './WindowList'
 import Install from './Install'
 import DialogList from './DialogList'
+window.searchParams = new URLSearchParams(location.search);
 class App extends React.Component {
   state = {
     isPWA: window.matchMedia('(display-mode: standalone)').matches
@@ -17,7 +18,7 @@ class App extends React.Component {
   }
 
   render() {
-    if (this.state.isPWA) {
+    if (process.env.NODE_ENV==='development'||this.state.isPWA) {
       return (
         <div className='App'>
           <Splash />

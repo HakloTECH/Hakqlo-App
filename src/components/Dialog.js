@@ -3,18 +3,28 @@ import { Modal } from 'react-dialog-polyfill'
 
 export default class extends React.Component {
   state = {
+    index: 0
   }
+  index=0
   componentDidMount() {
-    const dlist = this.props.dlist;
+    const dList = this.props.dList;
+    /*this.setState({
+      index: dList.state.dialogs.indexOf(this)
+    })*/
+    this.index=dList.state.dialogs.indexOf(this)
+    
   }
   render() {
-    const dList = this.props.dlist;
-    const dContent = dList.dialogContent;
+    const dContent = this.props.dcontent;
+    const dList = this.props.dList;
+    
+    //console.log(dList.state.dialogs);
     return (
       <Modal onClose={() => {
-        console.log(dList);
         dList.removeFrontDialog();
-      }} open>
+      }} className={
+        (dList.state.dialogs.length-1>this.index) ? 'sent-back' : ''
+      } open>
         <form method='dialog'>
           <p className='title'>{dContent.title}<button value='cancel'>cancel</button></p>
           {dContent.content.map(v=>{

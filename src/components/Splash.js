@@ -1,8 +1,11 @@
 import React from 'react'
 import anime from 'animejs/lib/anime.es.js'
 import '../css/splash.scss'
-
+window.onSplashEndFunctions = [];
+window.onsplashend=()=>{};
 export default class extends React.Component {
+  
+  
   componentDidMount() {
     const splashScreen = document.querySelector('#splash')
     const logoGrad = document.querySelector('svg#logo_anime #logo_grad')
@@ -14,7 +17,9 @@ export default class extends React.Component {
     const dur = 1300
     const fadeoutTime = 700
     let bw, bh, bigger
-    
+    window.onsplashend = (func) =>{
+      window.onSplashEndFunctions.push(func);
+    }
     const onResize = () => {
       bw = document.body.clientWidth
       bh = document.body.clientHeight
@@ -93,6 +98,10 @@ export default class extends React.Component {
     setTimeout(() => {
       splashScreen.style.transition = fadeoutTime/1000 + 's'
       splashScreen.style.opacity = 0
+      
+      setTimeout(() => {
+        window.onSplashEndFunctions.forEach(v=>v())
+      }, fadeoutTime/2)
       setTimeout(() => {
         splashScreen.remove()
       }, fadeoutTime)

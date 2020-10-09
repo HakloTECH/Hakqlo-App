@@ -7,26 +7,31 @@ export default class extends React.Component {
   state = {
     dialogs: []
   }
-  dialogContent = {
-    title:'',
-    content:[],
-  }
   removeFrontDialog(){
-    setTimeout(() => this.state.dialogs.pop(), 500);
-    this.state.dialogs[this.state.dialogs.length-2].parentNode.classList.remove('sent-back')
+    setTimeout(() => this.setState({
+      dialogs: this.state.dialogs.slice(0,-1)
+    }), 500);
   }
-  
   componentDidMount() {
-    self=this;
+    //window.popup = this.popupDialog
     
-    window.popupDialog = function(title, contents=[]){
-      if(typeof contents === 'string')this.dialogContent = [contents];
-      else this.dialogContent = contents;
-      self.state.dialogs.forEach(v=>{
-        v.parentNode.classList.add('sent-back')
-      })
+    const self=this;
+    
+    window.popup = function(title, contents=[]){
+      const dialogContent = {
+        title:title,
+        content:[],
+      }
+      if(typeof contents === 'string')dialogContent.content = [contents];
+      else dialogContent.content = contents;
+      /*self.state.dialogs.forEach(v=>{
+        v.className='sent-back'
+        //v.classList?.add('sent-back')
+      })*/
       self.setState({
-        dialogs: self.state.dialogs.concat([elem])
+        dialogs: self.state.dialogs.concat([
+          <Dialog dcontent={dialogContent} dList={self}></Dialog>
+        ])
       })
       /*self.setState(this.state.concat([
         {dialogs: dialogs}
@@ -36,9 +41,11 @@ export default class extends React.Component {
   render(){
     return (
       <div id='dialog-list'>
-        {this.state.dialogs.map((component, index) =>
-          <Dialog dlist={this} title='' component={component} key={index}/>
-        )
+        {
+          this.state.dialogs.map((component, index) =>{
+            //component.
+            return component
+          })
         }
       </div>
     )
