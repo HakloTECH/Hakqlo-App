@@ -1,6 +1,7 @@
 import React from 'react'
 import '../css/install.scss'
 import { mouse, ios, safari } from 'platform-detect'
+import  InlineSVG from './InlineSVG'
 export default class extends React.Component {
   state = {
     installPrompt: null
@@ -20,7 +21,7 @@ export default class extends React.Component {
         <button
           onClick={() => {
             if(mouse){
-              alert('PC version unavailable')
+              popup('PC version unavailable','')
             } else if (this.state.installPrompt) {
               this.state.installPrompt.prompt()
               this.state.installPrompt.userChoice.then(choice => {
@@ -31,7 +32,13 @@ export default class extends React.Component {
                 }
               })
             } else if(ios&&safari){
-              alert('*shows instruction')
+              popup('Add to Home Screen',[
+                'You can install Hakqlo App by adding this website to your home screen.',
+                <ol>
+                  <li>Tap the <InlineSVG src={require('../../icon/ios-safari-share-icon.svg').default} color={'rgba(56, 172, 255, 0.91)'}/> icon at the bottom of your browser</li>
+                  <li>Choose <InlineSVG src={require('../../icon/ios-safari-add-to-home-icon.svg').default} color={'white'}/> 'Add to Home Screen'.</li>
+                </ol>
+              ])
             } else {
               alert('インストールできませんでした')
             }

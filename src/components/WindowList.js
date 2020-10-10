@@ -7,6 +7,7 @@ Niwa-chan, I want this AppWindow to have following functionalities:
 - create-window
 - delete-window
 - undeletable-window(used for such as settings window)
+- executing onFocus method for each window-apps, when focused?
 can you do this?
 
 By the way, I added window.searchParams object:

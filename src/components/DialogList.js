@@ -17,22 +17,25 @@ export default class extends React.Component {
     
     const self=this;
     
-    window.popup = function(title, contents=[]){
+    window.popup = function(title, contents=[],buttons=['ok']){
       const dialogContent = {
         title:title,
         content:[],
+        buttons:[],
+        returnValue: new Promise(resolve=>{})
       }
       if(typeof contents === 'string')dialogContent.content = [contents];
       else dialogContent.content = contents;
+      if(typeof buttons === 'string')dialogContent.buttons = [buttons];
+      else dialogContent.buttons = buttons;
       /*self.state.dialogs.forEach(v=>{
         v.className='sent-back'
         //v.classList?.add('sent-back')
       })*/
       self.setState({
-        dialogs: self.state.dialogs.concat([
-          <Dialog dcontent={dialogContent} dList={self}></Dialog>
-        ])
+        dialogs: self.state.dialogs.concat([dialogContent])
       })
+      return dialogContent.returnValue
       /*self.setState(this.state.concat([
         {dialogs: dialogs}
       ]))*/
@@ -42,10 +45,9 @@ export default class extends React.Component {
     return (
       <div id='dialog-list'>
         {
-          this.state.dialogs.map((component, index) =>{
-            //component.
-            return component
-          })
+          this.state.dialogs.map((content, index) =>
+            <Dialog dcontent={content} dList={this} index={index} key={index+'d'}/>
+          )
         }
       </div>
     )
