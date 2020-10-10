@@ -12,6 +12,11 @@ window.anime = anime;
 /**
  * same as util.format in nodejs
  */
+const sleep = async (time) =>{
+  return new Promise(resolve=>{
+    setTimeout(()=>resolve(0),time)
+  })
+}
 function format(fmt) {
   var re = /(%?)(%([jds]))/g,
   args = Array.prototype.slice.call(arguments, 1),

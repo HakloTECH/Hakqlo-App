@@ -1,34 +1,35 @@
 import React from 'react';
 import { Modal } from 'react-dialog-polyfill'
+/*
 
+僕のスパゲッティーを食べたまえ！
+
+*/
 export default class extends React.Component {
-  state = {
-    index: 0
-  }
+
   resolve=null;
+  //deletePrevious = ()=>{}
   componentDidMount() {
     const dList = this.props.dList;
 
     const dContent = this.props.dcontent;
-    /*this.setState({
-      index: dList.state.dialogs.indexOf(this)
-    })*/
+
     this.index=this.props.index;
     dContent.returnValue=new Promise(resolve=>this.resolve=resolve)
-    //dList.state.dialogs.indexOf(this)
+
     
   }
   render() {
     const dContent = this.props.dcontent;
     const dList = this.props.dList;
-    //console.log(dList.state.dialogs.length);
     return (
       <Modal onClose={(e, dialog) => {
-        dList.removeFrontDialog();
+
+        dList.removeFrontDialog(dContent, this.index);
         this.resolve(dialog.returnValue)
       }} className={
         (dList.state.dialogs.length-1>this.index) ? 'sent-back' : ''
-      } open>
+      } open={true}>
         <form method='dialog'>
           <p className='title'>
             {dContent.title}
