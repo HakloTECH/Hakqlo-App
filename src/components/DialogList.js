@@ -42,7 +42,7 @@ export default class extends React.Component {
       self.setState({
         dialogs: self.state.dialogs.concat([dialogContent])
       })
-      await sleep(500)
+      await sleep(200)
       return dialogContent.returnValue
     }
   }
@@ -51,7 +51,7 @@ export default class extends React.Component {
       <div id='dialog-list'>
         {
           this.state.dialogs.map((content, index) =>
-            <Dialog dcontent={content} dList={this} index={index} key={index+'d'}/>
+            <Dialog dcontent={content} dList={this} index={index} key={index}/>
           )
         }
       </div>
