@@ -87,18 +87,6 @@ module.exports = {
         test: /\.m?jsx?$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
-        /*
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-            plugins: [
-              '@babel/plugin-proposal-class-properties',
-              //"@babel/plugin-proposal-optional-chaining",
-              //"@babel/plugin-proposal-nullish-coalescing-operator",
-            ]
-          }
-        }*/
       },
       {
         test: /\.css$/,
