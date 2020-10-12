@@ -2,4 +2,41 @@
 #splash{position:absolute;background-color:#000;display:flex;z-index:100200;transform:translateZ(200px);justify-content:center;align-items:center;top:0px;left:0px;width:100vw;height:100vh;transition:opacity 1s ease 2s}#splash svg#logo_anime{width:100vw;height:100vh;margin:0;position:absolute;top:0px;left:0px}#splash svg#logo_anime>g{fill:url(#logo_grad)}#splash.clear{opacity:0}
 .window-list{position:absolute;perspective:300px;perspective-origin:50vw 0;width:100vw;height:100vh;transform-style:preserve-3d;z-index:6;transition:.5s;visibility:visible;opacity:1}.window-list.away{transform:translateY(-100vh);visibility:hidden;opacity:0}.window-list.scrolling>.app-window{transition-duration:0s}.app-window{position:absolute;bottom:0;left:0;width:100vw;height:100vh;background-color:#fff;transform-origin:50vw 0vh;transition-duration:.2s;z-index:7}.app-window.focus{transform:none;opacity:1}.app-window.focus>.list-cover{display:none}.app-window.away{transform:translateZ(-100px);opacity:0}.app-window>.list-cover{position:absolute;z-index:20;width:100%;height:100%}
 .install{color:#fff}
+dialog {
+  position: absolute;
+  left: 0; right: 0;
+  width: -moz-fit-content;
+  width: -webkit-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: -webkit-fit-content;
+  height: fit-content;
+  margin: auto;
+  border: solid;
+  padding: 1em;
+  background: white;
+  color: black;
+  display: block;
+}
+
+dialog:not([open]) {
+  display: none;
+}
+
+dialog + .backdrop {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: rgba(0,0,0,0.1);
+}
+
+._dialog_overlay {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+}
+
+dialog.fixed {
+  position: fixed;
+  top: 50%;
+  transform: translate(0, -50%);
+}
 dialog{position:fixed;z-index:100149;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);background-color:rgba(73,73,73,.575);color:rgba(214,214,214,.925);border-width:0px;border-radius:5px;padding:8px;width:calc(100vw - 40px);text-align:center;font-family:Arial;transition:transform .5s ease;display:block;bottom:10px;user-select:none}dialog[open]{transform:translateY(0%)}dialog:not([open]),dialog.sent-back{transform:translateY(100%);display:block}dialog form{margin:0px}dialog form>div{border-bottom:1px solid;border-color:rgba(128,128,128,.63);margin:0px}dialog form>div li{text-align:left;margin:10px 0px}dialog form>div li *{display:inline-block;vertical-align:middle}dialog form>p{text-align:center;border-bottom:1px solid;padding-bottom:8px;border-color:rgba(128,128,128,.63);margin:0px;padding:18px}dialog form>p button{position:fixed;right:5px;padding:initial;padding:2px 6px}dialog form p.title{text-align:left;font-size:large;padding:0px;padding-bottom:8px;color:#f3f3f3}dialog menu{padding:0px;margin:0px;display:flex;flex-direction:row;justify-content:space-evenly}dialog button{position:relative;font-size:large;border-width:0px;border-radius:5px;color:rgba(56,172,255,.91);background-color:transparent;padding:12px 10px 4px 10px;margin:0px}
