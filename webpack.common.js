@@ -12,7 +12,7 @@ module.exports = {
     app: './src/index.jsx',
   },
   output: {
-    filename: '[name].[hash].js',
+    filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
@@ -23,7 +23,7 @@ module.exports = {
       template: './template/index.html',
     }),
     //new webpack.HotModuleReplacementPlugin(),
-    new webpack.ExtendedAPIPlugin(),
+    //new webpack.ExtendedAPIPlugin(),
     new WebpackPwaManifest({
       filename: "manifest.webmanifest",
       orientation: 'omit',

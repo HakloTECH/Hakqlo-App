@@ -4,6 +4,9 @@ const fs = require('fs')
 module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
+  output: {
+    publicPath: '/',
+  },
   devServer: {
     contentBase: './dist',
     headers: {
