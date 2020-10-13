@@ -75,7 +75,7 @@ export default class extends React.Component {
     anime({
       targets: 'svg#logo_anime stop[offset="1"]',
       'stop-color': [
-        {value: '#76f8fb'},
+        {value: '#6ce9fb'},
         {value: '#d15af9'}, 
       ],
       easing: 'easeInCubic',
@@ -113,8 +113,8 @@ export default class extends React.Component {
       <div id='splash'>
         <svg id='logo_anime'>
           <linearGradient xmlns='http://www.w3.org/2000/svg' id='logo_grad'  gradientUnits='userSpaceOnUse'>
-            <stop stopColor='#76f8fb' offset='0'></stop>
-            <stop stopColor='#76f8fb' offset='1'></stop>
+            <stop stopColor='#6ce9fb' offset='0'></stop>
+            <stop stopColor='#6ce9fb' offset='1'></stop>
           </linearGradient>
           <g stroke='transparent'>
             <path id='around' d='M 0 0 l 0 0 l 0 0 l 0 0 z m 0 0 l 0 0 l 0 0 l 0 0 z M 0 0 l 0 0 l 0 0 l 0 0 z m 0 0 l 0 0 l 0 0 l 0 0 z M 0 0 l 0 0 l 0 0 l 0 0 z m 0 0 l 0 0 l 0 0 l 0 0 z M 0 0 l 0 0 l 0 0' >
