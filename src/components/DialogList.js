@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 import '../css/dialog.scss';
 
-import { Modal } from 'react-dialog-polyfill'
+import { Modal } from './Modal'
 import Dialog from './Dialog';
 import {sleep} from '../js/base_func'
 export default class extends React.Component {

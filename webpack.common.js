@@ -16,6 +16,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    }),
     new MiniCssExtractPlugin(),
     new CaseSensitivePathsPlugin(),
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
@@ -37,13 +40,11 @@ module.exports = {
       categories: ["tech", "coding", "community"],
       icons: [
         {
-          //src: path.resolve("./icon/logo.svg"),
           src: path.resolve("./icon/logo008b.svg"),
           sizes: [256],
           type: "image/svg+xml"
         },
         {
-          //src: path.resolve("./icon/logo.svg"),
           src: path.resolve("./icon/logo008b.png"),
           sizes: [96,192,512],
           type: "image/png"
