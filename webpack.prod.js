@@ -16,5 +16,8 @@ module.exports = merge(common, {
       swDest: 'service-worker.js',
       maximumFileSizeToCacheInBytes: 1024 * 1024 * 5,
     }),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
   ]
 });

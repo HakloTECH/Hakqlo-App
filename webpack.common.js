@@ -16,9 +16,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    }),
     new MiniCssExtractPlugin(),
     new CaseSensitivePathsPlugin(),
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),

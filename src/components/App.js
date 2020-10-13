@@ -8,7 +8,20 @@ class App extends React.Component {
   state = {
     isPWA: window.matchMedia('(display-mode: standalone)').matches
   }
-
+  testAppScreen = false;
+  appScreen = (
+    <div className='App'>
+      <Splash />
+      <WindowList />
+      <DialogList />
+    </div>
+  )
+  installScreen = (
+    <div className='App'>
+      <Install />
+      <DialogList />
+    </div>
+  )
   componentDidMount() {
     window.matchMedia('(display-mode: standalone)').addEventListener('change', e => {
       this.setState({
@@ -18,21 +31,17 @@ class App extends React.Component {
   }
 
   render() {
-    if (process.env.NODE_ENV==='development'||true||this.state.isPWA) {
-      return (
-        <div className='App'>
-          <Splash />
-          <WindowList />
-          <DialogList />
-        </div>
-      )
+    //prevents leaving test codes to production build
+    if (process.env.NODE_ENV==='development'){
+      if(this.testAppScreen){
+        return this.appScreen;
+      } else {
+        return this.installScreen;
+      }
+    }else if (this.state.isPWA) {
+      return this.appScreen;
     } else {
-      return (
-        <div className='App'>
-          <Install />
-          <DialogList />
-        </div>
-      )
+      return this.installScreen;
     }
   }
 }
