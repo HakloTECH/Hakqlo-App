@@ -1,19 +1,12 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const fs = require('fs')
-
-const webpack = require('webpack')
 module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   output: {
     publicPath: '/',
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
-    }),
-  ],
   devServer: {
     contentBase: './dist',
     headers: {
