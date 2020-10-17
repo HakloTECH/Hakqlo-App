@@ -6,36 +6,10 @@ when you type in indentations, please use "double space" indentation.
 you can change the setting of indentation in VS Code.
 If you don't know how to, ask in our Discord channel.
 
-We are using WebPack
+We are using WebPack+React
 
-## file structure
-```
-.
-├── 404.html
-├── LICENSE
-├── README.md
-├── css
-│   └── <SCSS/CSS files>
-├── dist
-│   └──<compiled files!>
-├── icon
-│   └── <OGP, SVG icons, PNG images, etc>
-├── old_backups
-│   └── <it is for leaving old-backup files just in case>
-├── index.html -> <app main page>
-├── install.html -> <app install page>
-├── js
-│   └── <JS files>
-├── package-lock.json
-├── package.json
-├── sw.js -> <service worker script>
-├── test
-│   └── <directory for testing> 
-├── webpack.common.js -> <build configuration file>
-├── webpack.dev.js -> <build configuration file for development>
-└── webpack.prod.js -> <build configuration file for production>
+We are currently working on PWA edition. Future support for PC(electron) edition.
 
-```
 ## First step
 
 ```bash
@@ -47,7 +21,7 @@ For details, please see our Trello board.
 ## commands 
 ### npm 
 - `npm run build` - builds optimized files in dist/
-- `npm run start` - runs dev server and opens index.html on browser. it's useful. please use this when yu want to develop and see the changes instantly.
+- `npm run start` - runs dev server and opens index.html on browser. it's useful. please use this when you want to develop and see the changes instantly.
 - `npm run watch` - this is similar to above but it does not start a server and open browser. use this when you don't need to see the changes in browser.
 - `npm run deploy` - it runs `npm run build` and deploys to Github Page.
 ### git 
