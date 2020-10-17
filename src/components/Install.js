@@ -43,7 +43,7 @@ export default class extends React.Component {
                 if(v==='problem')popup('Try the following:', 'If you are not using Safari, try to use safari.')
               })
             } else {
-              popup('インストールできませんでした')
+              popup('Could not install the app.')
             }
           }}>
           インストール
