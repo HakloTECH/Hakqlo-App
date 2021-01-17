@@ -3,14 +3,21 @@
 this is an official app for Hakqlo community. 
 
 # for Developers:
-when you type in indentations, please use "double space" indentation.
-you can change the setting of indentation in VS Code.
+- when you type in indentations, please use "double space" indentation.
+ - you can change the setting of indentation in VS Code.
 If you don't know how to, ask in our Discord channel.
 
-We are using WebPack+React
+- We are using WebPack+React
 
-We are currently working on PWA edition. Future support for PC(electron) edition.
-
+- We are currently working on PWA edition. Future support for PC(electron) edition.
+- when making translation data with JSON files(i.e. en.json, ja.json),
+don't use characters like "'", "." or ":" for index keys.
+ - if you want to put periods or colons, try things like following:
+```json
+{
+  "Hello": "Hello."
+}
+```
 ## First step
 
 ```bash

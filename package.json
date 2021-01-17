@@ -9,7 +9,7 @@
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "watch": "webpack --watch",
     "deploy": "npm run build && gh-pages -d dist",
-    "push": "git add . && git commit -a -m 'npm' && git push",
+    "push": "git add . && git commit -a -m 'npm' && git push origin master",
     "ttttt": "echo "
   },
   "author": "Ichigo",
