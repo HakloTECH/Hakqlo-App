@@ -15,12 +15,12 @@ module.exports = {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
   },
-  cache: {
+  /*cache: {
     type: 'filesystem',
     buildDependencies: {
       config: [__filename]
     }
-  },
+  },*/
   plugins: [
     new webpack.DefinePlugin({
       'process.env': JSON.stringify(process.env)

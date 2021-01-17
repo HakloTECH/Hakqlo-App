@@ -96,15 +96,11 @@ export default class extends React.Component {
     })
     
     setTimeout(() => {
-      splashScreen.style.transition = fadeoutTime/1000 + 's'
-      splashScreen.style.opacity = 0
+      splashScreen.classList.add('clear')
       
       setTimeout(() => {
         window.onSplashEndFunctions.forEach(v=>v())
       }, fadeoutTime/2)
-      setTimeout(() => {
-        splashScreen.remove()
-      }, fadeoutTime)
     },3000)
   }
 

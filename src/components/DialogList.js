@@ -70,7 +70,7 @@ export default class extends React.Component {
                   {content.title}
                   <button value='cancel'>cancel</button>
                 </p>
-                {content.content.map((v,i)=>{
+                {content.content.map?.((v,i)=>{
                   if (typeof v === "string") {
                     return(<p key={i+'-text'}><label>{v}</label></p>)
                   } else if (typeof v === "object" ||v instanceof HTMLElement ) {

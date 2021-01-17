@@ -1,5 +1,5 @@
 import React from 'react'
-
+const {abs, sin, cos, PI} = Math
 export default class extends React.Component {
   listCover = React.createRef()
   state = {
@@ -38,8 +38,8 @@ export default class extends React.Component {
 
   getDistanceFromCenter(index, center, listLength) {
     const b_distance = index - center
-    if (Math.abs(b_distance) > Math.abs(b_distance+listLength)) return b_distance+listLength
-    if (Math.abs(b_distance) > Math.abs(b_distance-listLength)) return b_distance-listLength
+    if (abs(b_distance) > abs(b_distance+listLength)) return b_distance+listLength
+    if (abs(b_distance) > abs(b_distance-listLength)) return b_distance-listLength
     return b_distance;
   }
 
@@ -48,9 +48,9 @@ export default class extends React.Component {
     const isListView = winList.state.listView
     const isFocused = winList.state.currentWin === this.props.index
     const distanceFromCenter = this.getDistanceFromCenter(this.props.index, winList.state.scrollLength, winList.appWindows.length)
-    let wAngle = distanceFromCenter*Math.PI/4
-    if (Math.abs(wAngle)>Math.PI) wAngle = Math.PI
-    const cosA = Math.cos(wAngle);
+    let wAngle = distanceFromCenter*PI/4
+    if (abs(wAngle)>PI) wAngle = PI
+    const cosA = cos(wAngle);
     return (
       <div
         className={
@@ -59,7 +59,7 @@ export default class extends React.Component {
         }
         style={
           isListView ? {
-            transform: `scale(0.6, 0.6) translateZ(${cosA*70}px) translateX(${Math.sin(wAngle)*50}%)`,
+            transform: `scale(0.6, 0.6) translateZ(${cosA*70}px) translateX(${sin(wAngle)*50}%)`,
             opacity: cosA**1.5||0
           } : null
         }>

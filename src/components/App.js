@@ -3,12 +3,13 @@ import Splash from './Splash'
 import WindowList from './WindowList'
 import Install from './Install'
 import DialogList from './DialogList'
-window.searchParams = new URLSearchParams(location.search);
+//---multi language support
+import '../js/i18n';
 class App extends React.Component {
   state = {
     isPWA: window.matchMedia('(display-mode: standalone)').matches
   }
-  testAppScreen = false;
+  testAppScreen = true;
   appScreen = (
     <div className='App'>
       <Splash />
